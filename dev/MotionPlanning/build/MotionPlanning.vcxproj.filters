@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\GraphicsViewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Astar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\PRM.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Graph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Node.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Edge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Obstacle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Robot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\GraphicsViewer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Astar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\PRM.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Graph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Node.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Edge.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Obstacle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Robot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{3A2BD13B-D7BA-365B-906C-4C7DDA25DA77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{161F18D0-36D2-3FAB-ADEC-04A4750D9493}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
