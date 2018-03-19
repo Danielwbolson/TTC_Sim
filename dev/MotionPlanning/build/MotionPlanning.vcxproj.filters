@@ -60,10 +60,10 @@
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{3A2BD13B-D7BA-365B-906C-4C7DDA25DA77}</UniqueIdentifier>
+      <UniqueIdentifier>{540CB8AF-996A-3C96-92A9-9318875AB3E9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{161F18D0-36D2-3FAB-ADEC-04A4750D9493}</UniqueIdentifier>
+      <UniqueIdentifier>{ED948A01-C3CB-3A38-9585-4CA75D3997AE}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
