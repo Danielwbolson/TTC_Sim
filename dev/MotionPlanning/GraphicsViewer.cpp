@@ -3,7 +3,6 @@
 
 #include <nanogui/nanogui.h>
 #include <iostream>
-#include <gl/gl.h>
 
 GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Circle Simulation",false), target_(Point2(10, 10)) {
     simTime_ = 0.0;
@@ -136,8 +135,6 @@ void GraphicsViewer::DrawObstacles() {
 
 void GraphicsViewer::DrawPRM() {
     for (Node n : prm_->GetNodeList()) {
-        glBegin(GL_TRIANGLE_FAN);
-        glEnd();
 
     }
 }
