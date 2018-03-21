@@ -67,9 +67,7 @@ set(SOURCEFILES
   GraphicsViewer.cpp
   Astar.cpp
   PRM.cpp
-  Graph.cpp
   Node.cpp
-  Edge.cpp
   Obstacle.cpp
   Robot.cpp
 )
@@ -78,9 +76,7 @@ set(HEADERFILES
   GraphicsViewer.h
   Astar.h
   PRM.h
-  Graph.h
   Node.h
-  Edge.h
   Obstacle.h
   Robot.h
 )

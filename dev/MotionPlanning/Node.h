@@ -4,22 +4,28 @@
 
 #include <mingfx.h>
 
+#include <utility>
+
 class Node {
 public:
-    Node() {}
-    Node(Point2 location, std::vector<Node> neighborList);
+    Node();
+    Node(int id, Point3 location, std::vector<std::pair<Node, double>> neighborList);
 
-    Point2 GetLocation() const;
-    void Location(Point2 location);
+    int GetID() const;
 
-    std::vector<Node> GetNeighborList() const;
-    void NeighborList(std::vector<Node> neighborList);
-    void AddToNeighborList(Node x);
+    Point3 GetLocation() const;
+    void Location(Point3 location);
+
+    std::vector<std::pair<Node, double>> GetNeighborList() const;
+    void NeighborList(std::vector<std::pair<Node, double>> neighborList);
+    void AddToNeighborList(std::pair<Node, double>);
+
+    Node* parent_;
 
 private:
-    Point2 location_;
-    std::vector<Node> neighborList_;
-    
+    int id_;
+    Point3 location_;
+    std::vector<std::pair<Node, double>> neighborList_;
 };
 
 #endif // NODE_H_

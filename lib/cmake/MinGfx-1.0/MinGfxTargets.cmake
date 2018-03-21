@@ -55,8 +55,8 @@ add_library(MinGfx::MinGfx STATIC IMPORTED)
 
 set_target_properties(MinGfx::MinGfx PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "USE_NANOGUI;NANOGUI_GLAD;GLAD_GLAPI_EXPORT;USE_OPENGL;ALLOW_INIT_GFX_CTX_IN_CONSTRUCTOR"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include/MinGfx-1.0;D:/Daniel Olson/Desktop/repo-olso7118/include;D:/Daniel Olson/Desktop/repo-olso7118/include/nanovg"
-  INTERFACE_LINK_LIBRARIES "D:/Daniel Olson/Desktop/repo-olso7118/lib/nanogui.lib;OpenGL::GL;OpenGL::GLU"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include/MinGfx-1.0;C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/include;C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/include/nanovg"
+  INTERFACE_LINK_LIBRARIES "C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/lib/nanogui.lib;OpenGL::GL;OpenGL::GLU"
 )
 
 if(CMAKE_VERSION VERSION_LESS 2.8.12)

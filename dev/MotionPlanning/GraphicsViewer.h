@@ -7,7 +7,7 @@
 #include "Robot.h"
 #include "Obstacle.h"
 #include "Node.h"
-#include "Edge.h"
+#include "Astar.h"
 
 
 /** An application that opens up a window that includes a few buttons 
@@ -47,6 +47,8 @@ public:
 
     void InitNanoGUI();
 
+    void InitOpenGL();
+
     void UpdateSimulation(double dt);
 
 
@@ -82,24 +84,39 @@ public:
     void DrawRobot();
     void DrawObstacles();
     void DrawPRM();
+    void DrawPath();
 
 private:
     double simTime_;
     bool paused_;
     nanogui::Button *pauseBtn_;
 
+    Matrix4 projMatrix_;
+    Matrix4 viewMatrix_;
+    Matrix4 modelMatrix_;
+
+    // point that we would like to reach
+    Point3 target_;
+
     // reference to robot class and our main entity
     Robot* robot_;
 
-    // collection of obstacles and a reference to obstaclec class
+    // collection of obstacles and a reference to obstacle class
     std::vector<Obstacle> obstacleList_;
     Obstacle* obstacle_;
 
     // reference to our PRM
     PRM* prm_;
 
-    // point that we would like to reach
-    Point2 target_;
+    // reference to our algorithm
+    Astar* astar_;
+
+    // save our path of correct nodes
+    std::vector<Node> path_;
+    std::vector<Point3> point_path_;
+
+    // reference to quick_shapes to draw 3d objects
+    QuickShapes quick_shapes_;
 };
 
 #endif // GRAPHICS_VIEWER_H_

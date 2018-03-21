@@ -1,27 +1,34 @@
 
 #include "Node.h"
 
-Node::Node(Point2 location, std::vector<Node> neighborList) {
+Node::Node() {}
+
+Node::Node(int id, Point3 location, std::vector<std::pair<Node, double>> neighborList) {
+    id_ = id;
     location_ = location;
     neighborList_ = neighborList;
 }
 
-Point2 Node::GetLocation() const {
+int Node::GetID() const {
+    return id_;
+}
+
+Point3 Node::GetLocation() const {
     return location_;
 }
 
-void Node::Location(Point2 location) {
+void Node::Location(Point3 location) {
     location_ = location;
 }
 
-std::vector<Node> Node::GetNeighborList() const {
+std::vector<std::pair<Node, double>> Node::GetNeighborList() const {
     return neighborList_;
 }
 
-void Node::NeighborList(std::vector<Node> neighborList) {
+void Node::NeighborList(std::vector<std::pair<Node, double>> neighborList) {
     neighborList_ = neighborList;
 }
 
-void Node::AddToNeighborList(Node x) {
-    neighborList_.push_back(x);
+void Node::AddToNeighborList(std::pair<Node, double> n) {
+    neighborList_.push_back(n);
 }
