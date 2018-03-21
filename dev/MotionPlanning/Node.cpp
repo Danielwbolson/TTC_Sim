@@ -1,13 +1,19 @@
 
 #include "Node.h"
 
-Node::Node() {}
+Node::Node() : parent_(nullptr){}
 
-Node::Node(int id, Point3 location, std::vector<std::pair<Node, double>> neighborList) {
+Node::Node(int id, Point3 location, std::vector<std::pair<int, double>> neighborList) {
     id_ = id;
     location_ = location;
     neighborList_ = neighborList;
+    parent_ = nullptr;
 }
+
+//Node::~Node() {
+   // delete parent_;
+  //  neighborList_.clear();
+//}
 
 int Node::GetID() const {
     return id_;
@@ -21,14 +27,14 @@ void Node::Location(Point3 location) {
     location_ = location;
 }
 
-std::vector<std::pair<Node, double>> Node::GetNeighborList() const {
+std::vector<std::pair<int, double>> Node::GetNeighborList() const {
     return neighborList_;
 }
 
-void Node::NeighborList(std::vector<std::pair<Node, double>> neighborList) {
+void Node::NeighborList(std::vector<std::pair<int, double>> neighborList) {
     neighborList_ = neighborList;
 }
 
-void Node::AddToNeighborList(std::pair<Node, double> n) {
+void Node::AddToNeighborList(std::pair<int, double> n) {
     neighborList_.push_back(n);
 }

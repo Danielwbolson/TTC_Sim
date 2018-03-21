@@ -8,16 +8,19 @@ PRM::PRM(Point3 start, Point3 target, std::vector<Obstacle> obstacles) {
     obstacles_ = obstacles;
 
     // Initialize first item as start with an empty neighbor list
-    nodeList_.push_back(Node(0, start_, std::vector<std::pair<Node, double>>()));
+    nodeList_.push_back(Node(0, start_, std::vector<std::pair<int, double>>()));
 
     // Initialize second item as target with an empty neighbor list
-    nodeList_.push_back(Node(1, target_, std::vector<std::pair<Node, double>>()));
+    nodeList_.push_back(Node(1, target_, std::vector<std::pair<int, double>>()));
 
     // create all of the rest of our nodes
     for (int i = 2; i < PRM_SIZE_; i++) {
-        Point3 loc = Point3((float)rand() / RAND_MAX * SCENE_X_SIZE_, (float)rand() / RAND_MAX * SCENE_Y_SIZE_, 0);
+        std::random_device rd;
+        std::mt19937 eng(rd());
+        std::uniform_real_distribution<float> distr(0, 10);
+        Point3 loc = Point3(distr(eng), distr(eng), 0);
         if (!WithinObstacle(loc)) {
-            nodeList_.push_back(Node(i, loc, std::vector<std::pair<Node, double>>()));
+            nodeList_.push_back(Node(i, loc, std::vector<std::pair<int, double>>()));
         }
         else {
             i--;
@@ -26,11 +29,13 @@ PRM::PRM(Point3 start, Point3 target, std::vector<Obstacle> obstacles) {
 
     // connect neighboring nodes that do not intersect with an obstacle
     for (int i = 0; i < nodeList_.size(); i++) {
+        Node n_i = nodeList_[i];
         for (int j = 0; j < nodeList_.size(); j++) {
             if (i == j) { continue; }
-            if (CanConnect(nodeList_[i], nodeList_[j])) {
-                double distance = DistanceBetween(nodeList_[i], nodeList_[j]);
-                nodeList_[i].AddToNeighborList(std::make_pair(nodeList_[j], distance));
+            Node n_j = nodeList_[j];
+            if (CanConnect(n_i, n_j)) {
+                double distance = DistanceBetween(n_i.GetLocation(), n_j.GetLocation());
+                nodeList_[i].AddToNeighborList(std::make_pair(n_j.GetID(), distance));
             }
         }
     }
@@ -44,12 +49,8 @@ std::vector<Node> PRM::GetNodeList() const {
     return nodeList_;
 }
 
-double PRM::DistanceBetween(Node x, Node y) {
-    Point3 loc_1 = x.GetLocation();
-    Point3 loc_2 = y.GetLocation();
-
-    double distance = sqrt(pow(loc_1.x() - loc_2.x(), 2) + pow(loc_1.y() - loc_2.y(), 2));
-
+double PRM::DistanceBetween(Point3 a, Point3 b) {
+    double distance = sqrt(pow(a.x() - b.x(), 2) + pow(a.y() - b.y(), 2));
     return distance;
 }
 
@@ -67,8 +68,7 @@ bool PRM::WithinObstacle(Point3 x) {
 }
 
 bool PRM::WithinDistance(Node x, Node y) {
-    double distance = DistanceBetween(x, y);
-
+    double distance = DistanceBetween(x.GetLocation(), y.GetLocation());
     return (distance < DISTANCE_);
 }
 

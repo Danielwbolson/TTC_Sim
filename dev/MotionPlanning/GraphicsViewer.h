@@ -51,31 +51,7 @@ public:
 
     void UpdateSimulation(double dt);
 
-
-    void OnRestartBtnPressed();
-
     void OnPauseBtnPressed();
-
-
-    void OnMouseMove(const Point2 &pos, const Vector2 &delta);
-
-    void OnLeftMouseDown(const Point2 &pos);
-    void OnLeftMouseDrag(const Point2 &pos, const Vector2 &delta);
-    void OnLeftMouseUp(const Point2 &pos);
-    
-    void OnRightMouseDown(const Point2 &pos);
-    void OnRightMouseDrag(const Point2 &pos, const Vector2 &delta);
-    void OnRightMouseUp(const Point2 &pos);
-    
-    
-    void OnKeyDown(const char *c, int modifiers);
-
-    void OnKeyUp(const char *c, int modifiers);
-
-    void OnSpecialKeyDown(int key, int scancode, int modifiers);
-
-    void OnSpecialKeyUp(int key, int scancode, int modifiers);
-
 
     void DrawUsingNanoVG(NVGcontext *ctx);
 
@@ -87,7 +63,6 @@ public:
     void DrawPath();
 
 private:
-    double simTime_;
     bool paused_;
     nanogui::Button *pauseBtn_;
 

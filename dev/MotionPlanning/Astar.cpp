@@ -30,24 +30,24 @@ Astar::Astar(std::vector<Node> nodeList) {
         Node u = pq.top().first;
         pq.pop();
 
-        std::vector<std::pair<Node, double>> adj_list = u.GetNeighborList();
+        std::vector<std::pair<int, double>> adj_list = u.GetNeighborList();
         std::vector<int> completedNodes;
 
         for (int i = 0; i < u.GetNeighborList().size(); i++) {
             // Node u is our parent node
             // Node v is our adjacent node
-            Node v = adj_list[i].first;
+            int v = adj_list[i].first;
             double weight = adj_list[i].second;
 
-            if (std::find(completedNodes.begin(), completedNodes.end(), v.GetID()) != completedNodes.end()) {
+            if (std::find(completedNodes.begin(), completedNodes.end(), v) != completedNodes.end()) {
                 continue;
             }
 
-            if (dist[v.GetID()] > dist[u.GetID()] + weight) {
-                dist[v.GetID()] = dist[u.GetID()] + weight;
-                nodeList_[v.GetID()].parent_ = &u;
-                completedNodes.push_back(v.GetID());
-                pq.push(std::make_pair(nodeList_[v.GetID()], dist[v.GetID()]));
+            if (dist[v] > dist[u.GetID()] + weight) {
+                dist[v] = dist[u.GetID()] + weight;
+                nodeList_[v].parent_ = &nodeList_[u.GetID()];
+                completedNodes.push_back(v);
+                pq.push(std::make_pair(nodeList_[v], dist[v]));
             }
         }
     }
@@ -56,6 +56,7 @@ Astar::Astar(std::vector<Node> nodeList) {
         path_.push_back(nodeList_[targetNode.GetID()]);
         targetNode = *nodeList_[targetNode.GetID()].parent_;
     }
+    path_.push_back(startNode);
 }
 
 Astar::~Astar() {}

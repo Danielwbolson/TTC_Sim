@@ -6,7 +6,6 @@
 
 GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning", false), 
         target_(Point3(10, 10, 0)) {
-    simTime_ = 0.0;
     paused_ = false;
 
     // Instantiate our Robot
@@ -48,7 +47,6 @@ void GraphicsViewer::InitNanoGUI() {
     nanogui::FormHelper *gui = new nanogui::FormHelper(screen());
     nanogui::ref<nanogui::Window> window = gui->addWindow(Eigen::Vector2i(10, 10), "Simulation Controls");    
     pauseBtn_ = gui->addButton("Pause", std::bind(&GraphicsViewer::OnPauseBtnPressed, this));
-    gui->addButton("Restart", std::bind(&GraphicsViewer::OnRestartBtnPressed, this));
 
     screen()->performLayout();
 }
@@ -59,18 +57,13 @@ void GraphicsViewer::InitOpenGL() {
     viewMatrix_ = Matrix4::LookAt(Point3(5, 5, 10), Point3(5, 6, 0), Vector3(0, 0, 1));
 
     // Set a background color for screen
-    glClearColor(0.8, 0.8, 0.8, 1);
+    glClearColor(0.8f, 0.8f, 0.8f, 1);
 }
 
 void GraphicsViewer::UpdateSimulation(double dt) {
     if (!paused_) {
         robot_->UpdatePosition(dt);
     }
-}
-
-
-void GraphicsViewer::OnRestartBtnPressed() {
-    simTime_ = 0.0;
 }
 
 void GraphicsViewer::OnPauseBtnPressed() {
@@ -81,55 +74,6 @@ void GraphicsViewer::OnPauseBtnPressed() {
     else {
         pauseBtn_->setCaption("Pause");
     }
-}
-
-
-void GraphicsViewer::OnMouseMove(const Point2 &pos, const Vector2 &delta) {
-    std::cout << "Mouse moved by " << delta << " to reach " << pos << std::endl;
-}
-
-
-void GraphicsViewer::OnLeftMouseDown(const Point2 &pos) {
-    std::cout << "Left mouse button DOWN at " << pos << std::endl;
-}
-
-void GraphicsViewer::OnLeftMouseDrag(const Point2 &pos, const Vector2 &delta) {
-    std::cout << "Mouse dragged (left button) by " << delta << " to reach " << pos << std::endl;
-}
-
-void GraphicsViewer::OnLeftMouseUp(const Point2 &pos) {
-    std::cout << "Left mouse button UP at " << pos << std::endl;
-}
-
-
-void GraphicsViewer::OnRightMouseDown(const Point2 &pos) {
-    std::cout << "Right mouse button DOWN at " << pos << std::endl;
-}
-
-void GraphicsViewer::OnRightMouseDrag(const Point2 &pos, const Vector2 &delta) {
-    std::cout << "Mouse dragged (right button) by " << delta << " to reach " << pos << std::endl;
-}
-
-void GraphicsViewer::OnRightMouseUp(const Point2 &pos) {
-    std::cout << "Right mouse button UP at " << pos << std::endl;
-}
-
-
-void GraphicsViewer::OnKeyDown(const char *c, int modifiers) {
-    std::cout << "Key DOWN (" << c << ") modifiers=" << modifiers << std::endl; 
-}
-
-void GraphicsViewer::OnKeyUp(const char *c, int modifiers) {
-    std::cout << "Key UP (" << c << ") modifiers=" << modifiers << std::endl; 
-}
-
-
-void GraphicsViewer::OnSpecialKeyDown(int key, int scancode, int modifiers) {
-    std::cout << "Special Key DOWN key=" << key << " scancode=" << scancode << " modifiers=" << modifiers << std::endl; 
-}
-
-void GraphicsViewer::OnSpecialKeyUp(int key, int scancode, int modifiers) {
-    std::cout << "Special Key UP key=" << key << " scancode=" << scancode << " modifiers=" << modifiers << std::endl; 
 }
 
 
@@ -155,11 +99,16 @@ void GraphicsViewer::DrawUsingOpenGL() {
     DrawRobot();
     DrawObstacles();
     DrawPRM();
-   // DrawPath();
+    DrawPath();
 }
 
 void GraphicsViewer::DrawRobot() {
-
+    Color robotcol(0, 0, 1);
+    Matrix4 Mrobot =
+        Matrix4::Translation(robot_->GetPosition() - Point3(0, 0, 0)) *
+        Matrix4::Scale(Vector3(robot_->GetSize())) *
+        Matrix4::RotationX(GfxMath::ToRadians(90));
+    quick_shapes_.DrawCylinder(modelMatrix_ * Mrobot, viewMatrix_, projMatrix_, robotcol);
 }
 
 void GraphicsViewer::DrawObstacles() {
@@ -171,13 +120,14 @@ void GraphicsViewer::DrawPRM() {
     for (Node n : prm_->GetNodeList()) {
         Matrix4 Mnode =
             Matrix4::Translation(n.GetLocation() - Point3(0, 0, 0)) *
-            Matrix4::Scale(Vector3(0.2, 0.2, 0.2)) *
-            Matrix4::RotationX(GfxMath::ToRadians(90));
+            Matrix4::Scale(Vector3(0.1f, 0.1f, 0.1f));
         quick_shapes_.DrawSphere(modelMatrix_ * Mnode, viewMatrix_, projMatrix_, nodecol);
     }
 }
 
 void GraphicsViewer::DrawPath() {
     Color pathcol(0, 1, 0);
-    quick_shapes_.DrawLines(modelMatrix_, viewMatrix_, projMatrix_, pathcol, point_path_, quick_shapes_.LINES, 1);
+    for (int i = 0; i < point_path_.size() - 1; i++) {
+        quick_shapes_.DrawLineSegment(modelMatrix_, viewMatrix_, projMatrix_, pathcol, point_path_[i], point_path_[i+1], 0.05f);
+    }
 }

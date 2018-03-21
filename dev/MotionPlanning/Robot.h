@@ -20,13 +20,22 @@ public:
 
     void UpdatePosition(double dt);
 
+    Vector3 GetSize();
+
+    bool CanTravelTo(Node target);
+
+    Node NextNode();
+
 private:
     Point3 position_;
+    Vector3 size_;
+    
     PRM* prm_;
     std::vector<Node> path_;
     std::vector<Obstacle> obstacleList_;
 
     Node* targetNode_;
+    Node* furthestNode_;
 
     const double velocity_ = 1;
 };
