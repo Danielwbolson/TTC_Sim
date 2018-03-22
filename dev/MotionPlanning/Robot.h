@@ -5,7 +5,7 @@
 #include <mingfx.h>
 
 #include "Node.h"
-#include "PRM.h"
+#include "Obstacle.h"
 
 class Robot {
 public:
@@ -21,6 +21,7 @@ public:
     void UpdatePosition(double dt);
 
     Vector3 GetSize();
+    double GetRadius();
 
     bool CanTravelTo(Node target);
 
@@ -29,15 +30,15 @@ public:
 private:
     Point3 position_;
     Vector3 size_;
-    
-    PRM* prm_;
+    double radius_;
+
     std::vector<Node> path_;
     std::vector<Obstacle> obstacleList_;
 
     Node* targetNode_;
     Node* furthestNode_;
 
-    const double velocity_ = 1;
+    double velocity_ = 1;
 };
 
 #endif // ROBOT_H_

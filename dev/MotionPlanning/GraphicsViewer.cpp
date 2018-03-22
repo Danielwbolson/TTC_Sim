@@ -4,7 +4,7 @@
 #include <nanogui/nanogui.h>
 #include <iostream>
 
-GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning", false), 
+GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning",false), 
         target_(Point3(10, 10, 0)) {
     paused_ = false;
 
@@ -12,11 +12,11 @@ GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning", fals
     robot_ = new Robot();
 
     // Instantiate our Obstacle List
-    //obstacleList_ = obstacle_->MakeObstacles();
+    obstacleList_.push_back(Obstacle(2, Point3(5, 5, 0)));
 
     // Instantiate our PRM using our robots position, target position
     // and obstacles along the way
-    prm_ = new PRM(robot_->GetPosition(), target_, obstacleList_);
+    prm_ = new PRM(*robot_, robot_->GetPosition(), target_, obstacleList_);
 
     // Using our PRM, create a shortest path using Astar
     // Currently using Djikstra
@@ -96,10 +96,10 @@ void GraphicsViewer::DrawUsingNanoVG(NVGcontext *ctx) {
 }
 
 void GraphicsViewer::DrawUsingOpenGL() {
-    DrawRobot();
     DrawObstacles();
     DrawPRM();
     DrawPath();
+    DrawRobot();
 }
 
 void GraphicsViewer::DrawRobot() {
@@ -112,7 +112,14 @@ void GraphicsViewer::DrawRobot() {
 }
 
 void GraphicsViewer::DrawObstacles() {
-
+    Color obstaclecol(0, 0, 0, 0.1);
+    for (Obstacle o : obstacleList_) {
+        Matrix4 Mobstacle =
+            Matrix4::Translation(o.GetPosition() - Point3(0, 0, 0)) *
+            Matrix4::Scale(Vector3(o.GetRadius(), o.GetRadius(), 0.1)) *
+            Matrix4::RotationX(GfxMath::ToRadians(90));
+        quick_shapes_.DrawCylinder(modelMatrix_ * Mobstacle, viewMatrix_, projMatrix_, obstaclecol);
+    }
 }
 
 void GraphicsViewer::DrawPRM() {
@@ -120,14 +127,15 @@ void GraphicsViewer::DrawPRM() {
     for (Node n : prm_->GetNodeList()) {
         Matrix4 Mnode =
             Matrix4::Translation(n.GetLocation() - Point3(0, 0, 0)) *
-            Matrix4::Scale(Vector3(0.1f, 0.1f, 0.1f));
-        quick_shapes_.DrawSphere(modelMatrix_ * Mnode, viewMatrix_, projMatrix_, nodecol);
+            Matrix4::Scale(Vector3(0.05f, 0.05f, 0.05f)) *
+            Matrix4::RotationX(GfxMath::ToRadians(90));
+        quick_shapes_.DrawSquare(modelMatrix_ * Mnode, viewMatrix_, projMatrix_, nodecol);
     }
 }
 
 void GraphicsViewer::DrawPath() {
     Color pathcol(0, 1, 0);
     for (int i = 0; i < point_path_.size() - 1; i++) {
-        quick_shapes_.DrawLineSegment(modelMatrix_, viewMatrix_, projMatrix_, pathcol, point_path_[i], point_path_[i+1], 0.05f);
+        quick_shapes_.DrawLineSegment(modelMatrix_, viewMatrix_, projMatrix_, pathcol, point_path_[i], point_path_[i+1], 0.02f);
     }
 }

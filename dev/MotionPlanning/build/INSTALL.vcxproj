@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{6A9E29BD-B350-3284-B51D-7E41EC52C1D1}</ProjectGuid>
+    <ProjectGuid>{439A43CB-9DF8-3035-BF73-97221749CBB2}</ProjectGuid>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
     <Platform>x64</Platform>
@@ -150,7 +150,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\801e850e2cef99a64bc5d992adba0f3f\INSTALL_force.rule">
+    <CustomBuild Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\a553d83c3e276bb333602dcf4bb67bb6\INSTALL_force.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"> </Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd .
@@ -161,8 +161,8 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/CMakeFiles/801e850e2cef99a64bc5d992adba0f3f/INSTALL_force.rule;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\INSTALL_force</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/CMakeFiles/a553d83c3e276bb333602dcf4bb67bb6/INSTALL_force.rule;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\INSTALL_force</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'"> </Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
@@ -174,8 +174,8 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/CMakeFiles/801e850e2cef99a64bc5d992adba0f3f/INSTALL_force.rule;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\INSTALL_force</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/CMakeFiles/a553d83c3e276bb333602dcf4bb67bb6/INSTALL_force.rule;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\INSTALL_force</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'"> </Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
@@ -187,8 +187,8 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/CMakeFiles/801e850e2cef99a64bc5d992adba0f3f/INSTALL_force.rule;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\INSTALL_force</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/CMakeFiles/a553d83c3e276bb333602dcf4bb67bb6/INSTALL_force.rule;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\INSTALL_force</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'"> </Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
@@ -200,18 +200,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/CMakeFiles/801e850e2cef99a64bc5d992adba0f3f/INSTALL_force.rule;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\INSTALL_force</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/CMakeFiles/a553d83c3e276bb333602dcf4bb67bb6/INSTALL_force.rule;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\INSTALL_force</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\ZERO_CHECK.vcxproj">
-      <Project>{7CDA6FEF-43DE-31E7-9ACE-411A3C7ADCC9}</Project>
+    <ProjectReference Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\ZERO_CHECK.vcxproj">
+      <Project>{B4EB6296-25D8-3B7B-B4EA-C0A0F7B356BB}</Project>
       <Name>ZERO_CHECK</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\ALL_BUILD.vcxproj">
-      <Project>{390516A4-904B-3EA6-9FF9-F4C2BB9473E4}</Project>
+    <ProjectReference Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\ALL_BUILD.vcxproj">
+      <Project>{EDE8E560-D463-3EDC-AC47-A22089269A06}</Project>
       <Name>ALL_BUILD</Name>
     </ProjectReference>
   </ItemGroup>

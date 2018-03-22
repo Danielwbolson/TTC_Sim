@@ -1,8 +1,9 @@
 
 #include "PRM.h"
 
-PRM::PRM(Point3 start, Point3 target, std::vector<Obstacle> obstacles) {
+PRM::PRM(Robot robot, Point3 start, Point3 target, std::vector<Obstacle> obstacles) {
     srand(time(NULL));
+    robot_ = &robot;
     start_ = start;
     target_ = target;
     obstacles_ = obstacles;
@@ -64,6 +65,16 @@ bool PRM::CanConnect(Node x, Node y) {
 }
 
 bool PRM::WithinObstacle(Point3 x) {
+    for (Obstacle o : obstacles_) {
+        Point3 o_loc = o.GetPosition();
+
+        double distance = sqrt(pow(x[0] - o_loc[0], 2) + pow(x[1] - o_loc[1], 2)
+            + pow(x[2] + o_loc[2], 2));
+
+        if (distance < o.GetRadius() + robot_->GetRadius()) {
+            return true;
+        }
+    }
     return false;
 }
 
@@ -73,5 +84,20 @@ bool PRM::WithinDistance(Node x, Node y) {
 }
 
 bool PRM::NoObstacleInbetween(Node x, Node y) {
+    for (Obstacle o : obstacles_) {
+        Vector3 nodeVec = x.GetLocation() - y.GetLocation();
+        Vector3 nodeCirc = x.GetLocation() - o.GetPosition();
+
+        double scalConV = nodeCirc.Dot(nodeVec.ToUnit());
+        Vector3 ConV = scalConV * nodeVec.ToUnit();
+
+        Vector3 distFromCircCenter = nodeCirc - ConV;
+
+        double distance = distFromCircCenter.Length();
+
+        if (distance < o.GetRadius() + robot_->GetRadius()) {
+            return false;
+        }
+    }
     return true;
 }
