@@ -36,7 +36,7 @@ PRM::PRM(Robot robot, Point3 start, Point3 target, std::vector<Obstacle> obstacl
             Node n_j = nodeList_[j];
             if (CanConnect(n_i, n_j)) {
                 double distance = DistanceBetween(n_i.GetLocation(), n_j.GetLocation());
-                nodeList_[i].AddToNeighborList(std::make_pair(n_j.GetID(), distance));
+                nodeList_[i].AddToNeighborList(std::make_pair(n_j.GetID(), 0));
             }
         }
     }
@@ -46,7 +46,7 @@ PRM::~PRM() {
 
 }
 
-std::vector<Node> PRM::GetNodeList() const {
+std::vector<Node> const & PRM::GetNodeList() const {
     return nodeList_;
 }
 

@@ -7,20 +7,30 @@
 #include <limits>
 #include <algorithm>
 
+using std::vector;
+using std::pair;
+
 struct CompareNodesByDistance;
 
 class Astar {
 public:
     Astar() {}
-    Astar(std::vector<Node> nodeList);
+    Astar(vector<Node> nodeList);
 
-    std::vector<Node> GetPath();
+    vector<Node> GetPath();
+
+    double CalculateHeuristic(int i, int j);
+    double DistanceInbetween(int i, int j);
 
     ~Astar();
 
 private:
-    std::vector<Node> path_;
-    std::vector<Node> nodeList_;
+    vector<Node> path_;
+    vector<Node> nodeList_;
+
+    vector<double> gcost;
+    vector<double> heur;
+    vector<double> fcost;
 };
 
 #endif // ASTAR_H_

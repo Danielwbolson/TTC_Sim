@@ -22,7 +22,7 @@ public:
 
     bool CanConnect(Node x, Node y);
 
-    std::vector<Node> GetNodeList() const;
+    std::vector<Node> const & GetNodeList() const;
 
 private:
     bool WithinDistance(Node x, Node y);
@@ -31,7 +31,7 @@ private:
 
     int const SCENE_X_SIZE_ = 10;
     int const SCENE_Y_SIZE_ = 10;
-    int const PRM_SIZE_ = 300;
+    int const PRM_SIZE_ = 500;
     int const DISTANCE_ = 2;
 
     Point3 start_;

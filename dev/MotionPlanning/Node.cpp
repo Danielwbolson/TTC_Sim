@@ -1,13 +1,13 @@
 
 #include "Node.h"
 
-Node::Node() : parent_(nullptr){}
+Node::Node() : parent_(NULL){}
 
 Node::Node(int id, Point3 location, std::vector<std::pair<int, double>> neighborList) {
     id_ = id;
     location_ = location;
     neighborList_ = neighborList;
-    parent_ = nullptr;
+    parent_ = NULL;
 }
 
 //Node::~Node() {

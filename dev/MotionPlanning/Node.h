@@ -24,12 +24,12 @@ public:
     void NeighborList(std::vector<std::pair<int, double>> neighborList);
     void AddToNeighborList(std::pair<int, double>);
 
-    Node* parent_;
+    int parent_;
 
 private:
     int id_;
     Point3 location_;
-    std::vector <std::pair<int, double>> neighborList_;
+    std::vector<std::pair<int, double>> neighborList_;
 };
 
 #endif // NODE_H_

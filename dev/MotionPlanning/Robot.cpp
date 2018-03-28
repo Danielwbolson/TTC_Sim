@@ -30,7 +30,6 @@ void Robot::UpdatePosition(double dt) {
     if (targetNode_->GetLocation() != path_.back().GetLocation()) {
         *targetNode_ = NextNode();
     }
-
     Vector3 dir = (targetNode_->GetLocation() - position_).ToUnit();
 
     position_ = Point3(position_.x() + dir.x() * velocity_ * dt, 
@@ -53,8 +52,8 @@ double Robot::GetRadius() {
 
 bool Robot::CanTravelTo(Node target) {
     for (Obstacle o : obstacleList_) {
-        Vector3 nodeVec = position_ - target.GetLocation();
-        Vector3 nodeCirc = position_ - o.GetPosition();
+        Vector3 nodeVec = target.GetLocation() - position_;
+        Vector3 nodeCirc = o.GetPosition() - position_;
 
         double scalConV = nodeCirc.Dot(nodeVec.ToUnit());
         Vector3 ConV = scalConV * nodeVec.ToUnit();

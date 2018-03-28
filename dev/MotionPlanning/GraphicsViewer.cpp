@@ -100,6 +100,8 @@ void GraphicsViewer::DrawUsingOpenGL() {
     DrawPRM();
     DrawPath();
     DrawRobot();
+
+
 }
 
 void GraphicsViewer::DrawRobot() {
