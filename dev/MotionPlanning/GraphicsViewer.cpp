@@ -21,9 +21,9 @@ GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning",false
 
     // Using our PRM, create a shortest path using Astar
     // Currently using Djikstra
-    astar_ = new Astar(prm_->GetNodeList(), robotList_);
+    astar_ = new Astar(prm_->GetNodeList(), robotList_, obstacleList_);
 
-    for (Robot r : robotList_) {
+    for (Robot &r : robotList_) {
         r.SetObstacles(obstacleList_);
     }
 }
@@ -55,7 +55,7 @@ void GraphicsViewer::InitOpenGL() {
 
 void GraphicsViewer::UpdateSimulation(double dt) {
     if (!paused_) {
-        for (Robot r : robotList_) {
+        for (Robot &r : robotList_) {
             r.UpdatePosition(dt);
         }
     }
@@ -98,7 +98,7 @@ void GraphicsViewer::DrawUsingOpenGL() {
 }
 
 void GraphicsViewer::DrawRobots() {
-    for (Robot r : robotList_) {
+    for (Robot &r : robotList_) {
         Color robotcol(0, 0, 1);
         Matrix4 Mrobot =
             Matrix4::Translation(r.GetPosition() - Point3(0, 0, 0)) *
@@ -131,7 +131,7 @@ void GraphicsViewer::DrawPRM() {
 }
 
 void GraphicsViewer::DrawPath() {
-    for (Robot r : robotList_) {
+    for (Robot &r : robotList_) {
         std::vector<Node> robotPath = r.GetPath();
         Color pathcol(0, 1, 0);
         for (int i = 0; i < robotPath.size() - 1; i++) {

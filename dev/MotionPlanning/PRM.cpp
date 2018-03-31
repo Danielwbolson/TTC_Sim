@@ -1,13 +1,12 @@
 
 #include "PRM.h"
 
-PRM::PRM(std::vector<Robot> robotList, std::vector<Obstacle> obstacles) {
-    srand(time(NULL));
-    robotList_ = robotList;
+PRM::PRM(std::vector<Robot> &robotList, std::vector<Obstacle> obstacles) {
     obstacles_ = obstacles;
+    srand(time(NULL));
 
-    for (int i = 0; i < robotList_.size(); i++) {
-        Robot robot = robotList[i];
+    for (int i = 0; i < robotList.size(); i++) {
+        Robot &robot = robotList[i];
         // Initialize first item as start with an empty neighbor list
         nodeList_.push_back(Node(2*i, robot.GetPosition(), std::vector<std::pair<int, double>>()));
 
@@ -15,7 +14,7 @@ PRM::PRM(std::vector<Robot> robotList, std::vector<Obstacle> obstacles) {
         nodeList_.push_back(Node(2*i+1, robot.GetTarget(), std::vector<std::pair<int, double>>()));
     }
 
-    int startingIndex = 2 * robotList_.size();
+    int startingIndex = 2 * robotList.size();
 
     // create all of the rest of our nodes
     for (int i = startingIndex; i < PRM_SIZE_; i++) {

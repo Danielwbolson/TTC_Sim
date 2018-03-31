@@ -7,14 +7,16 @@ struct CompareNodesByDistance {
     }
 };
 
-Astar::Astar(vector<Node> nodeList, vector<Robot> robotList) {
+Astar::Astar(vector<Node> nodeList, vector<Robot> &robotList, vector<Obstacle> &obstacleList) {
     nodeList_ = nodeList;
-    robotList_ = robotList;
+    obstacles_ = obstacleList;
 
-    for (int i = 0; i < robotList_.size(); i++) {
+    for (int i = 0; i < robotList.size(); i++) {
         vector<double> gcost;
         vector<double> heur;
         vector<double> fcost;
+
+        double robotRadius = robotList[i].GetRadius();
 
         int robotIndex = 2 * i;
 
@@ -71,6 +73,16 @@ Astar::Astar(vector<Node> nodeList, vector<Robot> robotList) {
                 // Node nbr is our neighbor node
                 int nbr = adj_list[i].first;
 
+                // if the node is too close to the obstacle
+                if (TooCloseToObstacles(robotRadius, nodeList_[nbr].GetLocation())) {
+                    continue;
+                }
+
+                // if the line inbetween nodes is too close to obstacles
+                if (ObstacleInbetween(robotRadius, nodeList[curr], nodeList[nbr])) {
+                    continue;
+                }
+
                 // weight is the value of the edge between curr and nbr
                 double weight = DistanceInbetween(nbr, curr);
 
@@ -106,7 +118,7 @@ Astar::Astar(vector<Node> nodeList, vector<Robot> robotList) {
 
         // Reverse the path to get it starting from the robot's position
         std::reverse(path_.begin(), path_.end());
-        robotList_[i].SetPath(path_);
+        robotList[i].SetPath(path_);
     }
 }
 
@@ -126,4 +138,35 @@ double Astar::DistanceInbetween(int i, int j) {
     Point3 uLoc = nodeList_[i].GetLocation();
     Point3 vLoc = nodeList_[j].GetLocation();
     return ((double)sqrt(pow(uLoc.x() - vLoc.x(), 2) + pow(uLoc.y() - vLoc.y(), 2) + pow(uLoc.z() - vLoc.z(), 2)));
+}
+
+bool Astar::TooCloseToObstacles(double rad, Point3 loc) {
+    for (Obstacle &o : obstacles_) {
+        Vector3 v = o.GetPosition() - loc;
+        double dist = sqrt(pow(v[0], 2) + pow(v[1], 2) + pow(v[2], 2));
+
+        if (dist < o.GetRadius() + rad) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Astar::ObstacleInbetween(double rad, Node u, Node v) {
+    for (Obstacle &o : obstacles_) {
+        Vector3 nodeVec = u.GetLocation() - v.GetLocation();
+        Vector3 nodeCirc = v.GetLocation() - o.GetPosition();
+
+        double scalConV = nodeCirc.Dot(nodeVec.ToUnit());
+        Vector3 ConV = scalConV * nodeVec.ToUnit();
+
+        Vector3 distFromCircCenter = nodeCirc - ConV;
+
+        double distance = distFromCircCenter.Length();
+
+        if (distance < o.GetRadius() + rad) {
+            return true;
+        }
+    }
+    return false;
 }
