@@ -13,7 +13,7 @@
 
 class PRM {
 public:
-    PRM(Robot robot, Point3 start, Point3 target, std::vector<Obstacle> obstacles);
+    PRM(std::vector<Robot> robotList, std::vector<Obstacle> obstacles);
     ~PRM();
 
     double DistanceBetween(Point3 a, Point3 b);
@@ -37,7 +37,7 @@ private:
     Point3 start_;
     Point3 target_;
     std::vector<Obstacle> obstacles_;
-    Robot* robot_;
+    std::vector<Robot> robotList_;
     std::vector<Node> nodeList_;
 };
 

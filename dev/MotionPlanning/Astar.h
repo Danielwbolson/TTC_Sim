@@ -3,6 +3,8 @@
 #define ASTAR_H_
 
 #include "Node.h"
+#include "Robot.h"
+
 #include <queue>
 #include <limits>
 #include <algorithm>
@@ -15,7 +17,7 @@ struct CompareNodesByDistance;
 class Astar {
 public:
     Astar() {}
-    Astar(vector<Node> nodeList);
+    Astar(vector<Node> nodeList, vector<Robot> robotList);
 
     vector<Node> GetPath();
 
@@ -27,10 +29,7 @@ public:
 private:
     vector<Node> path_;
     vector<Node> nodeList_;
-
-    vector<double> gcost;
-    vector<double> heur;
-    vector<double> fcost;
+    vector<Robot> robotList_;
 };
 
 #endif // ASTAR_H_

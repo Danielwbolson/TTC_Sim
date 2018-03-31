@@ -1,21 +1,24 @@
 
 #include "PRM.h"
 
-PRM::PRM(Robot robot, Point3 start, Point3 target, std::vector<Obstacle> obstacles) {
+PRM::PRM(std::vector<Robot> robotList, std::vector<Obstacle> obstacles) {
     srand(time(NULL));
-    robot_ = &robot;
-    start_ = start;
-    target_ = target;
+    robotList_ = robotList;
     obstacles_ = obstacles;
 
-    // Initialize first item as start with an empty neighbor list
-    nodeList_.push_back(Node(0, start_, std::vector<std::pair<int, double>>()));
+    for (int i = 0; i < robotList_.size(); i++) {
+        Robot robot = robotList[i];
+        // Initialize first item as start with an empty neighbor list
+        nodeList_.push_back(Node(2*i, robot.GetPosition(), std::vector<std::pair<int, double>>()));
 
-    // Initialize second item as target with an empty neighbor list
-    nodeList_.push_back(Node(1, target_, std::vector<std::pair<int, double>>()));
+        // Initialize second item as target with an empty neighbor list
+        nodeList_.push_back(Node(2*i+1, robot.GetTarget(), std::vector<std::pair<int, double>>()));
+    }
+
+    int startingIndex = 2 * (robotList_.size() - 1);
 
     // create all of the rest of our nodes
-    for (int i = 2; i < PRM_SIZE_; i++) {
+    for (int i = startingIndex; i < PRM_SIZE_; i++) {
         std::random_device rd;
         std::mt19937 eng(rd());
         std::uniform_real_distribution<float> distr(0, 10);
@@ -71,7 +74,7 @@ bool PRM::WithinObstacle(Point3 x) {
         double distance = sqrt(pow(x[0] - o_loc[0], 2) + pow(x[1] - o_loc[1], 2)
             + pow(x[2] + o_loc[2], 2));
 
-        if (distance < o.GetRadius() + robot_->GetRadius()) {
+        if (distance < o.GetRadius()) {
             return true;
         }
     }
@@ -95,7 +98,7 @@ bool PRM::NoObstacleInbetween(Node x, Node y) {
 
         double distance = distFromCircCenter.Length();
 
-        if (distance < o.GetRadius() + robot_->GetRadius()) {
+        if (distance < o.GetRadius()) {
             return false;
         }
     }

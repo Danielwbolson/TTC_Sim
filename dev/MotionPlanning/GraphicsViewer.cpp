@@ -4,43 +4,37 @@
 #include <nanogui/nanogui.h>
 #include <iostream>
 
-GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning",false), 
-        target_(Point3(10, 10, 0)) {
-    paused_ = false;
+GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning",false), paused_(false) {
 
-    // Instantiate our Robot
-    robot_ = new Robot();
+    // Instantiate our Robots
+    robotList_.push_back(Robot(Point3(0, 0, 0), Point3(10, 10, 0), 0.5));
+    robotList_.push_back(Robot(Point3(10, 10, 0), Point3(0, 0, 0), 0.5));
+    robotList_.push_back(Robot(Point3(10, 0, 0), Point3(0, 10, 0), 1));
+    robotList_.push_back(Robot(Point3(0, 10, 0), Point3(10, 0, 0), 1));
 
     // Instantiate our Obstacle List
     obstacleList_.push_back(Obstacle(2, Point3(5, 5, 0)));
 
     // Instantiate our PRM using our robots position, target position
     // and obstacles along the way
-    prm_ = new PRM(*robot_, robot_->GetPosition(), target_, obstacleList_);
+    prm_ = new PRM(robotList_, obstacleList_);
 
     // Using our PRM, create a shortest path using Astar
     // Currently using Djikstra
-    astar_ = new Astar(prm_->GetNodeList());
-    path_ = astar_->GetPath();
+    astar_ = new Astar(prm_->GetNodeList(), robotList_);
 
-    for (int i = 0; i < path_.size(); i++) {
-        point_path_.push_back(path_[i].GetLocation());
+    for (Robot r : robotList_) {
+        r.SetObstacles(obstacleList_);
     }
-
-    // Reverse the path to get it starting from the robot's position
-    std::reverse(path_.begin(), path_.end());
-
-    robot_->SetPath(path_);
-    robot_->SetObstacles(obstacleList_);
 }
 
 
 GraphicsViewer::~GraphicsViewer() {
-    delete robot_;
     obstacleList_.clear();
     delete prm_;
     delete astar_;
     path_.clear();
+    robotList_.clear();
 }
 
 void GraphicsViewer::InitNanoGUI() {
@@ -62,7 +56,9 @@ void GraphicsViewer::InitOpenGL() {
 
 void GraphicsViewer::UpdateSimulation(double dt) {
     if (!paused_) {
-        robot_->UpdatePosition(dt);
+        for (Robot r : robotList_) {
+            r.UpdatePosition(dt);
+        }
     }
 }
 
@@ -99,18 +95,18 @@ void GraphicsViewer::DrawUsingOpenGL() {
     DrawObstacles();
     DrawPRM();
     DrawPath();
-    DrawRobot();
-
-
+    DrawRobots();
 }
 
-void GraphicsViewer::DrawRobot() {
-    Color robotcol(0, 0, 1);
-    Matrix4 Mrobot =
-        Matrix4::Translation(robot_->GetPosition() - Point3(0, 0, 0)) *
-        Matrix4::Scale(Vector3(robot_->GetSize())) *
-        Matrix4::RotationX(GfxMath::ToRadians(90));
-    quick_shapes_.DrawCylinder(modelMatrix_ * Mrobot, viewMatrix_, projMatrix_, robotcol);
+void GraphicsViewer::DrawRobots() {
+    for (Robot r : robotList_) {
+        Color robotcol(0, 0, 1);
+        Matrix4 Mrobot =
+            Matrix4::Translation(r.GetPosition() - Point3(0, 0, 0)) *
+            Matrix4::Scale(Vector3(r.GetSize())) *
+            Matrix4::RotationX(GfxMath::ToRadians(90));
+        quick_shapes_.DrawCylinder(modelMatrix_ * Mrobot, viewMatrix_, projMatrix_, robotcol);
+    }
 }
 
 void GraphicsViewer::DrawObstacles() {
@@ -136,8 +132,11 @@ void GraphicsViewer::DrawPRM() {
 }
 
 void GraphicsViewer::DrawPath() {
-    Color pathcol(0, 1, 0);
-    for (int i = 0; i < point_path_.size() - 1; i++) {
-        quick_shapes_.DrawLineSegment(modelMatrix_, viewMatrix_, projMatrix_, pathcol, point_path_[i], point_path_[i+1], 0.02f);
+    for (Robot r : robotList_) {
+        std::vector<Node> robotPath = r.GetPath();
+        Color pathcol(0, 1, 0);
+        for (int i = 0; i < robotPath.size() - 1; i++) {
+            quick_shapes_.DrawLineSegment(modelMatrix_, viewMatrix_, projMatrix_, pathcol, robotPath[i].GetLocation(), robotPath[i+1].GetLocation(), 0.02f);
+        }
     }
 }

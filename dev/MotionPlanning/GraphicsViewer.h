@@ -57,7 +57,7 @@ public:
 
     void DrawUsingOpenGL();
 
-    void DrawRobot();
+    void DrawRobots();
     void DrawObstacles();
     void DrawPRM();
     void DrawPath();
@@ -70,15 +70,11 @@ private:
     Matrix4 viewMatrix_;
     Matrix4 modelMatrix_;
 
-    // point that we would like to reach
-    Point3 target_;
-
     // reference to robot class and our main entity
-    Robot* robot_;
+    std::vector<Robot> robotList_;
 
     // collection of obstacles and a reference to obstacle class
     std::vector<Obstacle> obstacleList_;
-    Obstacle* obstacle_;
 
     // reference to our PRM
     PRM* prm_;
@@ -88,7 +84,6 @@ private:
 
     // save our path of correct nodes
     std::vector<Node> path_;
-    std::vector<Point3> point_path_;
 
     // reference to quick_shapes to draw 3d objects
     QuickShapes quick_shapes_;

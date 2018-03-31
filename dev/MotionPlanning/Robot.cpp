@@ -1,9 +1,14 @@
 
 #include "Robot.h"
 
-Robot::Robot() : position_(Point3(0, 0, 0)), size_(Vector3(0.5, 0.5, 0.5)),
-           radius_(0.5) {
+Robot::Robot() : position_(Point3(0, 0, 0)), radius_(0.5) {
 
+}
+
+Robot::Robot(Point3 position, Point3 target, double radius) {
+    position_ = position;
+    radius_ = radius;
+    target_ = target;
 }
 
 Robot::~Robot() {
@@ -12,6 +17,10 @@ Robot::~Robot() {
 
 Point3 Robot::GetPosition() {
     return position_;
+}
+
+Point3 Robot::GetTarget() {
+    return target_;
 }
 
 void Robot::SetPath(std::vector<Node> path) {
@@ -43,11 +52,15 @@ void Robot::UpdatePosition(double dt) {
 }
 
 Vector3 Robot::GetSize() {
-    return size_;
+    return Vector3(radius_, radius_, radius_);
 }
 
 double Robot::GetRadius() {
     return radius_;
+}
+
+std::vector<Node> Robot::GetPath() {
+    return path_;
 }
 
 bool Robot::CanTravelTo(Node target) {

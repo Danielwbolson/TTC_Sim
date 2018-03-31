@@ -10,9 +10,11 @@
 class Robot {
 public:
     Robot();
+    Robot(Point3 position, Point3 target, double radius);
     ~Robot();
 
     Point3 GetPosition();
+    Point3 GetTarget();
 
     void SetPath(std::vector<Node>);
 
@@ -22,6 +24,7 @@ public:
 
     Vector3 GetSize();
     double GetRadius();
+    std::vector<Node> Robot::GetPath();
 
     bool CanTravelTo(Node target);
 
@@ -29,7 +32,7 @@ public:
 
 private:
     Point3 position_;
-    Vector3 size_;
+    Point3 target_;
     double radius_;
 
     std::vector<Node> path_;
