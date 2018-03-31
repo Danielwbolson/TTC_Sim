@@ -15,7 +15,7 @@ PRM::PRM(std::vector<Robot> robotList, std::vector<Obstacle> obstacles) {
         nodeList_.push_back(Node(2*i+1, robot.GetTarget(), std::vector<std::pair<int, double>>()));
     }
 
-    int startingIndex = 2 * (robotList_.size() - 1);
+    int startingIndex = 2 * robotList_.size();
 
     // create all of the rest of our nodes
     for (int i = startingIndex; i < PRM_SIZE_; i++) {

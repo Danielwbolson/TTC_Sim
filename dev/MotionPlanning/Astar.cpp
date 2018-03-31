@@ -12,6 +12,9 @@ Astar::Astar(vector<Node> nodeList, vector<Robot> robotList) {
     robotList_ = robotList;
 
     for (int i = 0; i < robotList_.size(); i++) {
+        vector<double> gcost;
+        vector<double> heur;
+        vector<double> fcost;
 
         int robotIndex = 2 * i;
 
@@ -27,10 +30,6 @@ Astar::Astar(vector<Node> nodeList, vector<Robot> robotList) {
         // two sets which will contain completed and currently enqueued nodes
         vector<int> closedSet;
         vector<int> openSet;
-
-        vector<double> gcost;
-        vector<double> heur;
-        vector<double> fcost;
 
         for (int i = 0; i < nodeList_.size(); i++) {
             gcost.push_back(std::numeric_limits<double>::max());
@@ -49,7 +48,6 @@ Astar::Astar(vector<Node> nodeList, vector<Robot> robotList) {
         openSet.push_back(startNode);
 
         while (!pq.empty()) {
-
             // curr is our node with the smallest fcost
             int curr = pq.top().first;
 
@@ -71,7 +69,7 @@ Astar::Astar(vector<Node> nodeList, vector<Robot> robotList) {
 
                 // Node curr is our current dequeued node
                 // Node nbr is our neighbor node
-                int nbr = std::get<0>(adj_list[i]);
+                int nbr = adj_list[i].first;
 
                 // weight is the value of the edge between curr and nbr
                 double weight = DistanceInbetween(nbr, curr);
@@ -108,7 +106,6 @@ Astar::Astar(vector<Node> nodeList, vector<Robot> robotList) {
 
         // Reverse the path to get it starting from the robot's position
         std::reverse(path_.begin(), path_.end());
-
         robotList_[i].SetPath(path_);
     }
 }

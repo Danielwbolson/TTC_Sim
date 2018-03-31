@@ -33,7 +33,6 @@ GraphicsViewer::~GraphicsViewer() {
     obstacleList_.clear();
     delete prm_;
     delete astar_;
-    path_.clear();
     robotList_.clear();
 }
 
