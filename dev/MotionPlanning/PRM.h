@@ -31,8 +31,8 @@ private:
 
     int const SCENE_X_SIZE_ = 10;
     int const SCENE_Y_SIZE_ = 10;
-    int const PRM_SIZE_ = 500;
-    int const DISTANCE_ = 2;
+    int const PRM_SIZE_ = 200;
+    int const DISTANCE_ = 4;
 
     Point3 start_;
     Point3 target_;
