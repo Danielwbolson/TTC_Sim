@@ -81,6 +81,10 @@
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <CodeAnalysisRuleSet>NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\MinGfx-1.0;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -98,6 +102,7 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;USE_OPENGL;USE_NANOGUI;NANOGUI_GLAD;GLAD_GLAPI_EXPORT;ALLOW_INIT_GFX_CTX_IN_CONSTRUCTOR;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
+      <EnablePREfast>true</EnablePREfast>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;USE_OPENGL;USE_NANOGUI;NANOGUI_GLAD;GLAD_GLAPI_EXPORT;ALLOW_INIT_GFX_CTX_IN_CONSTRUCTOR;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>

@@ -7,8 +7,8 @@
 GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning",false), paused_(false) {
 
     DefaultShader::LightProperties light;
-    light.position = Point3(5, 5, 20);
-    light.diffuse_intensity = Color(0, 0, 0);
+    light.position = Point3(5, 5, 100);
+    light.diffuse_intensity = Color(255, 0, 0);
     s_.AddLight(light);
 
     std::vector<std::string> search_path;
@@ -26,6 +26,7 @@ GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning",false
 
     // Instantiate our Obstacle List
     obstacleList_.push_back(Obstacle(2, Point3(5, 5, 0)));
+    obstacleList_.push_back(Obstacle(1, Point3(3, 8, 0)));
 
     // Instantiate our PRM using our robots position, target position
     // and obstacles along the way
@@ -34,7 +35,6 @@ GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning",false
     ConstructIndexes(prm_->GetNodeList());
 
     // Using our PRM, create a shortest path using Astar
-    // Currently using Djikstra
     astar_ = new Astar(prm_->GetNodeList(), robotList_, obstacleList_);
 
     for (Robot &r : robotList_) {
@@ -55,18 +55,10 @@ void GraphicsViewer::ConstructIndexes(std::vector<Node> nodes) {
     for (int i = 0; i < nodes.size(); i++) {
         Point3 loc = nodes[i].GetLocation();
 
-        if (loc[0] - rad > 0 && loc[1] - rad > 0) {
-            vertices.push_back(Point3(loc[0] - rad, loc[1] - rad, 0)); // bottom left
-            vertices.push_back(Point3(loc[0] + rad, loc[1] - rad, 0)); // bottom right
-            vertices.push_back(Point3(loc[0] - rad, loc[1] + rad, 0)); // top left
-            vertices.push_back(Point3(loc[0] + rad, loc[1] + rad, 0)); // top right
-        }
-        else {
-            vertices.push_back(Point3(loc[0], loc[1], 0)); // bottom left
-            vertices.push_back(Point3(loc[0] + rad, loc[1], 0)); // bottom right
-            vertices.push_back(Point3(loc[0], loc[1] + rad, 0)); // top left
-            vertices.push_back(Point3(loc[0] + rad, loc[1] + rad, 0)); // top right
-        }
+        vertices.push_back(Point3(loc[0] - rad, loc[1] - rad, 0)); // bottom left
+        vertices.push_back(Point3(loc[0] + rad, loc[1] - rad, 0)); // bottom right
+        vertices.push_back(Point3(loc[0] - rad, loc[1] + rad, 0)); // top left
+        vertices.push_back(Point3(loc[0] + rad, loc[1] + rad, 0)); // top right
 
         normals.push_back(Vector3(0, 0, 1));
         normals.push_back(Vector3(0, 0, 1));
@@ -93,7 +85,7 @@ void GraphicsViewer::ConstructIndexes(std::vector<Node> nodes) {
     m_.SetNormals(normals);
     m_.SetTexCoords(0, texcoords);
     m_.SetIndices(indices);
-    m_.UpdateGPUMemory();
+    //m_.UpdateGPUMemory();
 }
 
 void GraphicsViewer::InitNanoGUI() {
@@ -170,7 +162,7 @@ void GraphicsViewer::DrawRobots() {
 
 void GraphicsViewer::DrawObstacles() {
     Color obstaclecol(0, 0, 0, 0.1);
-    for (Obstacle o : obstacleList_) {
+    for (Obstacle &o : obstacleList_) {
         Matrix4 Mobstacle =
             Matrix4::Translation(o.GetPosition() - Point3(0, 0, 0)) *
             Matrix4::Scale(Vector3(o.GetRadius(), o.GetRadius(), 0.1)) *

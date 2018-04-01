@@ -18,8 +18,10 @@ Astar::Astar(vector<Node> nodeList, vector<Robot> &robotList, vector<Obstacle> &
 
         vector<Node> path_;
 
+        // radius of the current robot we are calculating for
         double robotRadius = robotList[i].GetRadius();
 
+        // this robot's index inside our nodeList
         int robotIndex = 2 * i;
 
         // starting point

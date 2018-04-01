@@ -28,7 +28,7 @@ Point3 Robot::GetTarget() {
 void Robot::SetPath(std::vector<Node> path) {
     path_ = path;
     targetNode_ = path_[0];
-    furthestNode_ = path_[0];
+    furthestNode_ = path_[1];
 }
 
 void Robot::SetObstacles(std::vector<Obstacle> obstacles) {
