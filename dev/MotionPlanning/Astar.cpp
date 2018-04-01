@@ -16,6 +16,8 @@ Astar::Astar(vector<Node> nodeList, vector<Robot> &robotList, vector<Obstacle> &
         vector<double> heur;
         vector<double> fcost;
 
+        vector<Node> path_;
+
         double robotRadius = robotList[i].GetRadius();
 
         int robotIndex = 2 * i;
@@ -67,16 +69,11 @@ Astar::Astar(vector<Node> nodeList, vector<Robot> &robotList, vector<Obstacle> &
             // get our current nodes adjacency list
             vector<pair<int, double>> adj_list = nodeList_[curr].GetNeighborList();
 
-            for (int i = 0; i < adj_list.size(); i++) {
+            for (int j = 0; j < adj_list.size(); j++) {
 
                 // Node curr is our current dequeued node
                 // Node nbr is our neighbor node
-                int nbr = adj_list[i].first;
-
-                // if the node is too close to the obstacle
-                if (TooCloseToObstacles(robotRadius, nodeList_[nbr].GetLocation())) {
-                    continue;
-                }
+                int nbr = adj_list[j].first;
 
                 // if the line inbetween nodes is too close to obstacles
                 if (ObstacleInbetween(robotRadius, nodeList[curr], nodeList[nbr])) {
@@ -124,10 +121,6 @@ Astar::Astar(vector<Node> nodeList, vector<Robot> &robotList, vector<Obstacle> &
 
 Astar::~Astar() {}
 
-vector<Node> Astar::GetPath() {
-    return path_;
-}
-
 double Astar::CalculateHeuristic(int i, int j) {
     Point3 uLoc = nodeList_[i].GetLocation();
     Point3 vLoc = nodeList_[j].GetLocation();
@@ -140,22 +133,10 @@ double Astar::DistanceInbetween(int i, int j) {
     return ((double)sqrt(pow(uLoc.x() - vLoc.x(), 2) + pow(uLoc.y() - vLoc.y(), 2) + pow(uLoc.z() - vLoc.z(), 2)));
 }
 
-bool Astar::TooCloseToObstacles(double rad, Point3 loc) {
+bool Astar::ObstacleInbetween(double rad, Node curr, Node nbr) {
     for (Obstacle &o : obstacles_) {
-        Vector3 v = o.GetPosition() - loc;
-        double dist = sqrt(pow(v[0], 2) + pow(v[1], 2) + pow(v[2], 2));
-
-        if (dist < o.GetRadius() + rad) {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool Astar::ObstacleInbetween(double rad, Node u, Node v) {
-    for (Obstacle &o : obstacles_) {
-        Vector3 nodeVec = u.GetLocation() - v.GetLocation();
-        Vector3 nodeCirc = v.GetLocation() - o.GetPosition();
+        Vector3 nodeVec = nbr.GetLocation() - curr.GetLocation();
+        Vector3 nodeCirc = o.GetPosition() - curr.GetLocation();
 
         double scalConV = nodeCirc.Dot(nodeVec.ToUnit());
         Vector3 ConV = scalConV * nodeVec.ToUnit();

@@ -1,7 +1,7 @@
 
 #include "Robot.h"
 
-Robot::Robot() : position_(Point3(0, 0, 0)), radius_(0.5) {
+Robot::Robot() : position_(Point3(0, 0, 0)), radius_(0.5), pathIndex_(0) {
 
 }
 
@@ -9,6 +9,8 @@ Robot::Robot(Point3 position, Point3 target, double radius) {
     position_ = position;
     radius_ = radius;
     target_ = target;
+    pathIndex_ = 0;
+    finishedPathing = false;
 }
 
 Robot::~Robot() {
@@ -25,8 +27,8 @@ Point3 Robot::GetTarget() {
 
 void Robot::SetPath(std::vector<Node> path) {
     path_ = path;
-    targetNode_ = &path_[0];
-    furthestNode_ = &path_[0];
+    targetNode_ = path_[0];
+    furthestNode_ = path_[0];
 }
 
 void Robot::SetObstacles(std::vector<Obstacle> obstacles) {
@@ -36,19 +38,19 @@ void Robot::SetObstacles(std::vector<Obstacle> obstacles) {
 void Robot::UpdatePosition(double dt) {
     // move towards furthest node in path that you can reach
     // tracking that node with targetNode_
-    if (targetNode_->GetLocation() != path_.back().GetLocation()) {
-        *targetNode_ = NextNode();
+    if (!finishedPathing) {
+        targetNode_ = NextNode();
     }
 
-    Vector3 dir = (targetNode_->GetLocation() - position_).ToUnit();
+    Vector3 dir = (targetNode_.GetLocation() - position_).ToUnit();
 
     position_ = Point3(position_.x() + dir.x() * velocity_ * dt, 
                        position_.y() + dir.y() * velocity_ * dt, 
                        position_.z() + dir.z() * velocity_ * dt);
 
-    double distance = (position_ - targetNode_->GetLocation()).Length();
+    double distance = (position_ - targetNode_.GetLocation()).Length();
     if (distance < 0.01) {
-        position_ = targetNode_->GetLocation();
+        position_ = targetNode_.GetLocation();
     }
 }
 
@@ -84,10 +86,17 @@ bool Robot::CanTravelTo(Node target) {
 }
 
 Node Robot::NextNode() {
-    if (targetNode_->GetLocation() != path_.back().GetLocation() && CanTravelTo(*furthestNode_)) {
-        *targetNode_ = *furthestNode_;
-        furthestNode_++;
+    if (furthestNode_.GetLocation() == path_.back().GetLocation() && CanTravelTo(furthestNode_)) {
+        targetNode_ = furthestNode_;
+        finishedPathing = true;
+        return targetNode_;
+    }
+
+    if (targetNode_.GetLocation() != path_.back().GetLocation() && CanTravelTo(furthestNode_)) {
+        targetNode_ = furthestNode_;
+        pathIndex_++;
+        furthestNode_ = path_[pathIndex_];
         NextNode();
     }
-    return *targetNode_;
+    return targetNode_;
 }

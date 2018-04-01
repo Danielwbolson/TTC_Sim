@@ -20,10 +20,7 @@ public:
     Astar() {}
     Astar(vector<Node> nodeList, vector<Robot> &robotList, vector<Obstacle> &obstacleList);
 
-    vector<Node> GetPath();
-
-    bool TooCloseToObstacles(double rad, Point3 loc);
-    bool ObstacleInbetween(double rad, Node u, Node v);
+    bool ObstacleInbetween(double rad, Node curr, Node nbr);
 
     double CalculateHeuristic(int i, int j);
     double DistanceInbetween(int i, int j);
@@ -31,7 +28,6 @@ public:
     ~Astar();
 
 private:
-    vector<Node> path_;
     vector<Node> nodeList_;
     vector<Obstacle> obstacles_;
 };

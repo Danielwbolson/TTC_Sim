@@ -6,11 +6,23 @@
 
 GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning",false), paused_(false) {
 
+    DefaultShader::LightProperties light;
+    light.position = Point3(5, 5, 20);
+    light.diffuse_intensity = Color(0, 0, 0);
+    s_.AddLight(light);
+
+    std::vector<std::string> search_path;
+    search_path.push_back(".");
+    search_path.push_back("./data");
+    search_path.push_back("C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/data");
+    //m_.LoadFromOBJ(Platform::FindFile("box.obj", search_path));
+    m_.LoadFromOBJ(Platform::FindMinGfxDataFile("teapot.obj"));
+
     // Instantiate our Robots
     robotList_.push_back(Robot(Point3(0, 0, 0), Point3(10, 10, 0), 0.5));
-    robotList_.push_back(Robot(Point3(10, 10, 0), Point3(0, 0, 0), 0.5));
-    robotList_.push_back(Robot(Point3(10, 0, 0), Point3(0, 10, 0), 1));
+    robotList_.push_back(Robot(Point3(0, 5, 0), Point3(10, 5, 0), 0.5));
     robotList_.push_back(Robot(Point3(0, 10, 0), Point3(10, 0, 0), 1));
+    robotList_.push_back(Robot(Point3(5, 10, 0), Point3(5, 0, 0), 1));
 
     // Instantiate our Obstacle List
     obstacleList_.push_back(Obstacle(2, Point3(5, 5, 0)));
@@ -18,6 +30,8 @@ GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning",false
     // Instantiate our PRM using our robots position, target position
     // and obstacles along the way
     prm_ = new PRM(robotList_, obstacleList_);
+
+    ConstructIndexes(prm_->GetNodeList());
 
     // Using our PRM, create a shortest path using Astar
     // Currently using Djikstra
@@ -34,6 +48,52 @@ GraphicsViewer::~GraphicsViewer() {
     delete prm_;
     delete astar_;
     robotList_.clear();
+}
+
+void GraphicsViewer::ConstructIndexes(std::vector<Node> nodes) {
+    double rad = 0.05;
+    for (int i = 0; i < nodes.size(); i++) {
+        Point3 loc = nodes[i].GetLocation();
+
+        if (loc[0] - rad > 0 && loc[1] - rad > 0) {
+            vertices.push_back(Point3(loc[0] - rad, loc[1] - rad, 0)); // bottom left
+            vertices.push_back(Point3(loc[0] + rad, loc[1] - rad, 0)); // bottom right
+            vertices.push_back(Point3(loc[0] - rad, loc[1] + rad, 0)); // top left
+            vertices.push_back(Point3(loc[0] + rad, loc[1] + rad, 0)); // top right
+        }
+        else {
+            vertices.push_back(Point3(loc[0], loc[1], 0)); // bottom left
+            vertices.push_back(Point3(loc[0] + rad, loc[1], 0)); // bottom right
+            vertices.push_back(Point3(loc[0], loc[1] + rad, 0)); // top left
+            vertices.push_back(Point3(loc[0] + rad, loc[1] + rad, 0)); // top right
+        }
+
+        normals.push_back(Vector3(0, 0, 1));
+        normals.push_back(Vector3(0, 0, 1));
+        normals.push_back(Vector3(0, 0, 1));
+        normals.push_back(Vector3(0, 0, 1));
+
+        texcoords.push_back(Point2(0, 1));
+        texcoords.push_back(Point2(1, 1));
+        texcoords.push_back(Point2(0, 0));
+        texcoords.push_back(Point2(1, 0));
+    }
+
+    for (int i = 0; i < 4 * nodes.size(); i+=4) {
+        indices.push_back(i);
+        indices.push_back(i+1);
+        indices.push_back(i+3);
+
+        indices.push_back(i);
+        indices.push_back(i+3);
+        indices.push_back(i+2);
+    }
+
+    m_.SetVertices(vertices);
+    m_.SetNormals(normals);
+    m_.SetTexCoords(0, texcoords);
+    m_.SetIndices(indices);
+    m_.UpdateGPUMemory();
 }
 
 void GraphicsViewer::InitNanoGUI() {
@@ -120,14 +180,15 @@ void GraphicsViewer::DrawObstacles() {
 }
 
 void GraphicsViewer::DrawPRM() {
-    Color nodecol(1, 0, 0);
+    /*Color nodecol(1, 0, 0);
     for (Node n : prm_->GetNodeList()) {
         Matrix4 Mnode =
             Matrix4::Translation(n.GetLocation() - Point3(0, 0, 0)) *
             Matrix4::Scale(Vector3(0.05f, 0.05f, 0.05f)) *
             Matrix4::RotationX(GfxMath::ToRadians(90));
         quick_shapes_.DrawSquare(modelMatrix_ * Mnode, viewMatrix_, projMatrix_, nodecol);
-    }
+    }*/
+    s_.Draw(modelMatrix_, viewMatrix_, projMatrix_, &m_, mat);
 }
 
 void GraphicsViewer::DrawPath() {
