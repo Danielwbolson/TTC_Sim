@@ -16,7 +16,7 @@ public:
     PRM(std::vector<Robot> &robotList, std::vector<Obstacle> obstacles);
     ~PRM();
 
-    double DistanceBetween(Point3 a, Point3 b);
+    float DistanceBetween(Point3 a, Point3 b);
 
     bool WithinObstacle(Point3 x);
 

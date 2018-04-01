@@ -7,10 +7,10 @@
 class Obstacle {
 public:
     Obstacle();
-    Obstacle(double radius, Point3 position);
+    Obstacle(float radius, Point3 position);
 
-    void Radius(double radius);
-    double GetRadius();
+    void Radius(float radius);
+    float GetRadius();
 
     void Position(Point3 position);
     Point3 GetPosition();
@@ -18,7 +18,7 @@ public:
     //std::vector<Obstacle> MakeObstacles();
 
 private:
-    double radius_;
+    float radius_;
     Point3 position_;
 };
 

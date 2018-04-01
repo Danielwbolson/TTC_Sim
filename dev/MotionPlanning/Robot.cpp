@@ -5,7 +5,7 @@ Robot::Robot() : position_(Point3(0, 0, 0)), radius_(0.5), pathIndex_(0) {
 
 }
 
-Robot::Robot(Point3 position, Point3 target, double radius) {
+Robot::Robot(Point3 position, Point3 target, float radius) {
     position_ = position;
     radius_ = radius;
     target_ = target;
@@ -35,7 +35,7 @@ void Robot::SetObstacles(std::vector<Obstacle> obstacles) {
     obstacleList_ = obstacles;
 }
 
-void Robot::UpdatePosition(double dt) {
+void Robot::UpdatePosition(float dt) {
     // move towards furthest node in path that you can reach
     // tracking that node with targetNode_
     if (!finishedPathing) {
@@ -48,7 +48,7 @@ void Robot::UpdatePosition(double dt) {
                        position_.y() + dir.y() * velocity_ * dt, 
                        position_.z() + dir.z() * velocity_ * dt);
 
-    double distance = (position_ - targetNode_.GetLocation()).Length();
+    float distance = (position_ - targetNode_.GetLocation()).Length();
     if (distance < 0.01) {
         position_ = targetNode_.GetLocation();
     }
@@ -58,7 +58,7 @@ Vector3 Robot::GetSize() {
     return Vector3(radius_, radius_, radius_);
 }
 
-double Robot::GetRadius() {
+float Robot::GetRadius() {
     return radius_;
 }
 
@@ -71,12 +71,12 @@ bool Robot::CanTravelTo(Node target) {
         Vector3 nodeVec = target.GetLocation() - position_;
         Vector3 nodeCirc = o.GetPosition() - position_;
 
-        double scalConV = nodeCirc.Dot(nodeVec.ToUnit());
+        float scalConV = nodeCirc.Dot(nodeVec.ToUnit());
         Vector3 ConV = scalConV * nodeVec.ToUnit();
 
         Vector3 distFromCircCenter = nodeCirc - ConV;
 
-        double distance = distFromCircCenter.Length();
+        float distance = distFromCircCenter.Length();
 
         if (distance < o.GetRadius() + radius_) {
             return false;

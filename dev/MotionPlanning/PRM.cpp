@@ -8,10 +8,10 @@ PRM::PRM(std::vector<Robot> &robotList, std::vector<Obstacle> obstacles) {
     for (int i = 0; i < robotList.size(); i++) {
         Robot &robot = robotList[i];
         // Initialize first item as start with an empty neighbor list
-        nodeList_.push_back(Node(2*i, robot.GetPosition(), std::vector<std::pair<int, double>>()));
+        nodeList_.push_back(Node(2*i, robot.GetPosition(), std::vector<std::pair<int, float>>()));
 
         // Initialize second item as target with an empty neighbor list
-        nodeList_.push_back(Node(2*i+1, robot.GetTarget(), std::vector<std::pair<int, double>>()));
+        nodeList_.push_back(Node(2*i+1, robot.GetTarget(), std::vector<std::pair<int, float>>()));
     }
 
     int startingIndex = 2 * robotList.size();
@@ -23,7 +23,7 @@ PRM::PRM(std::vector<Robot> &robotList, std::vector<Obstacle> obstacles) {
         std::uniform_real_distribution<float> distr(0, 10);
         Point3 loc = Point3(distr(eng), distr(eng), 0);
         if (!WithinObstacle(loc)) {
-            nodeList_.push_back(Node(i, loc, std::vector<std::pair<int, double>>()));
+            nodeList_.push_back(Node(i, loc, std::vector<std::pair<int, float>>()));
         }
         else {
             i--;
@@ -37,7 +37,7 @@ PRM::PRM(std::vector<Robot> &robotList, std::vector<Obstacle> obstacles) {
             if (i == j) { continue; }
             Node n_j = nodeList_[j];
             if (CanConnect(n_i, n_j)) {
-                double distance = DistanceBetween(n_i.GetLocation(), n_j.GetLocation());
+                float distance = DistanceBetween(n_i.GetLocation(), n_j.GetLocation());
                 nodeList_[i].AddToNeighborList(std::make_pair(n_j.GetID(), 0));
             }
         }
@@ -52,8 +52,8 @@ std::vector<Node> const & PRM::GetNodeList() const {
     return nodeList_;
 }
 
-double PRM::DistanceBetween(Point3 a, Point3 b) {
-    double distance = sqrt(pow(a.x() - b.x(), 2) + pow(a.y() - b.y(), 2));
+float PRM::DistanceBetween(Point3 a, Point3 b) {
+    float distance = sqrt(pow(a.x() - b.x(), 2) + pow(a.y() - b.y(), 2));
     return distance;
 }
 
@@ -70,7 +70,7 @@ bool PRM::WithinObstacle(Point3 x) {
     for (Obstacle o : obstacles_) {
         Point3 o_loc = o.GetPosition();
 
-        double distance = sqrt(pow(x[0] - o_loc[0], 2) + pow(x[1] - o_loc[1], 2)
+        float distance = sqrt(pow(x[0] - o_loc[0], 2) + pow(x[1] - o_loc[1], 2)
             + pow(x[2] + o_loc[2], 2));
 
         if (distance < o.GetRadius()) {
@@ -81,7 +81,7 @@ bool PRM::WithinObstacle(Point3 x) {
 }
 
 bool PRM::WithinDistance(Node x, Node y) {
-    double distance = DistanceBetween(x.GetLocation(), y.GetLocation());
+    float distance = DistanceBetween(x.GetLocation(), y.GetLocation());
     return (distance < DISTANCE_);
 }
 
@@ -90,12 +90,12 @@ bool PRM::NoObstacleInbetween(Node x, Node y) {
         Vector3 nodeVec = x.GetLocation() - y.GetLocation();
         Vector3 nodeCirc = x.GetLocation() - o.GetPosition();
 
-        double scalConV = nodeCirc.Dot(nodeVec.ToUnit());
+        float scalConV = nodeCirc.Dot(nodeVec.ToUnit());
         Vector3 ConV = scalConV * nodeVec.ToUnit();
 
         Vector3 distFromCircCenter = nodeCirc - ConV;
 
-        double distance = distFromCircCenter.Length();
+        float distance = distFromCircCenter.Length();
 
         if (distance < o.GetRadius()) {
             return false;

@@ -12,7 +12,7 @@ public:
     typedef std::shared_ptr<Node> NodePtr;
 
     Node();
-    Node(int id, Point3 location, std::vector<std::pair<int, double>> neighborList);
+    Node(int id, Point3 location, std::vector<std::pair<int, float>> neighborList);
    // ~Node();
 
     int GetID() const;
@@ -20,16 +20,16 @@ public:
     Point3 GetLocation() const;
     void Location(Point3 location);
 
-    std::vector<std::pair<int, double>> GetNeighborList() const;
-    void NeighborList(std::vector<std::pair<int, double>> neighborList);
-    void AddToNeighborList(std::pair<int, double>);
+    std::vector<std::pair<int, float>> GetNeighborList() const;
+    void NeighborList(std::vector<std::pair<int, float>> neighborList);
+    void AddToNeighborList(std::pair<int, float>);
 
     int parent_;
 
 private:
     int id_;
     Point3 location_;
-    std::vector<std::pair<int, double>> neighborList_;
+    std::vector<std::pair<int, float>> neighborList_;
 };
 
 #endif // NODE_H_

@@ -20,10 +20,10 @@ public:
     Astar() {}
     Astar(vector<Node> nodeList, vector<Robot> &robotList, vector<Obstacle> &obstacleList);
 
-    bool ObstacleInbetween(double rad, Node curr, Node nbr);
+    bool ObstacleInbetween(float rad, Node curr, Node nbr);
 
-    double CalculateHeuristic(int i, int j);
-    double DistanceInbetween(int i, int j);
+    float CalculateHeuristic(int i, int j);
+    float DistanceInbetween(int i, int j);
 
     ~Astar();
 

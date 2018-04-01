@@ -7,14 +7,20 @@
 GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning",false), paused_(false) {
 
     DefaultShader::LightProperties light;
-    light.position = Point3(5, 5, 100);
-    light.diffuse_intensity = Color(255, 0, 0);
+    light.position = Point3(5, 5, 0);
+    light.diffuse_intensity = Color(0, 0, 0);
+    light.ambient_intensity = Color(0, 0, 0);
+    light.specular_intensity = Color(0, 0, 0);
     s_.AddLight(light);
+
+    mat.shinniness = 1000;
 
     std::vector<std::string> search_path;
     search_path.push_back(".");
-    search_path.push_back("./data");
-    search_path.push_back("C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/data");
+    search_path.push_back("data/");
+    search_path.push_back("./data/");
+    search_path.push_back("../data/");
+    search_path.push_back("C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/data/");
     //m_.LoadFromOBJ(Platform::FindFile("box.obj", search_path));
     m_.LoadFromOBJ(Platform::FindMinGfxDataFile("teapot.obj"));
 
@@ -51,7 +57,7 @@ GraphicsViewer::~GraphicsViewer() {
 }
 
 void GraphicsViewer::ConstructIndexes(std::vector<Node> nodes) {
-    double rad = 0.05;
+    float rad = 0.05;
     for (int i = 0; i < nodes.size(); i++) {
         Point3 loc = nodes[i].GetLocation();
 
@@ -123,25 +129,6 @@ void GraphicsViewer::OnPauseBtnPressed() {
     }
 }
 
-
-void GraphicsViewer::DrawUsingNanoVG(NVGcontext *ctx) {
-    // example of drawing some circles
-
-    /*nvgBeginPath(ctx);
-    nvgCircle(ctx, 512+50.0*cos(simTime_), 350+200.0*sin(simTime_), 50);
-    nvgFillColor(ctx, nvgRGBA(100,100,255,200));
-    nvgFill(ctx);
-    nvgStrokeColor(ctx, nvgRGBA(0,0,0,255));
-    nvgStroke(ctx);
-
-    nvgBeginPath(ctx);
-    nvgCircle(ctx, 512+200.0*cos(simTime_), 350+50.0*sin(simTime_), 50);
-    nvgFillColor(ctx, nvgRGBA(255,100,100,200));
-    nvgFill(ctx);
-    nvgStrokeColor(ctx, nvgRGBA(0,0,0,255));
-    nvgStroke(ctx);*/
-}
-
 void GraphicsViewer::DrawUsingOpenGL() {
     DrawObstacles();
     DrawPRM();
@@ -150,7 +137,7 @@ void GraphicsViewer::DrawUsingOpenGL() {
 }
 
 void GraphicsViewer::DrawRobots() {
-    for (Robot &r : robotList_) {
+    for (Robot r : robotList_) {
         Color robotcol(0, 0, 1);
         Matrix4 Mrobot =
             Matrix4::Translation(r.GetPosition() - Point3(0, 0, 0)) *
@@ -162,29 +149,21 @@ void GraphicsViewer::DrawRobots() {
 
 void GraphicsViewer::DrawObstacles() {
     Color obstaclecol(0, 0, 0, 0.1);
-    for (Obstacle &o : obstacleList_) {
+    for (Obstacle o : obstacleList_) {
         Matrix4 Mobstacle =
             Matrix4::Translation(o.GetPosition() - Point3(0, 0, 0)) *
-            Matrix4::Scale(Vector3(o.GetRadius(), o.GetRadius(), 0.1)) *
+            Matrix4::Scale(Vector3(o.GetRadius(), o.GetRadius(), 0.1f)) *
             Matrix4::RotationX(GfxMath::ToRadians(90));
         quick_shapes_.DrawCylinder(modelMatrix_ * Mobstacle, viewMatrix_, projMatrix_, obstaclecol);
     }
 }
 
 void GraphicsViewer::DrawPRM() {
-    /*Color nodecol(1, 0, 0);
-    for (Node n : prm_->GetNodeList()) {
-        Matrix4 Mnode =
-            Matrix4::Translation(n.GetLocation() - Point3(0, 0, 0)) *
-            Matrix4::Scale(Vector3(0.05f, 0.05f, 0.05f)) *
-            Matrix4::RotationX(GfxMath::ToRadians(90));
-        quick_shapes_.DrawSquare(modelMatrix_ * Mnode, viewMatrix_, projMatrix_, nodecol);
-    }*/
     s_.Draw(modelMatrix_, viewMatrix_, projMatrix_, &m_, mat);
 }
 
 void GraphicsViewer::DrawPath() {
-    for (Robot &r : robotList_) {
+    for (Robot r : robotList_) {
         std::vector<Node> robotPath = r.GetPath();
         Color pathcol(0, 1, 0);
         for (int i = 0; i < robotPath.size() - 1; i++) {

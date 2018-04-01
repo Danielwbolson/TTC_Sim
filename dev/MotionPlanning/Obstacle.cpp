@@ -5,7 +5,7 @@ Obstacle::Obstacle() : radius_(2), position_(Point3(5, 5, 0)) {
 
 }
 
-Obstacle::Obstacle(double radius, Point3 position) {
+Obstacle::Obstacle(float radius, Point3 position) {
     radius_ = radius;
     position_ = position;
 }
@@ -18,10 +18,10 @@ Point3 Obstacle::GetPosition() {
     return position_;
 }
 
-void Obstacle::Radius(double radius) {
+void Obstacle::Radius(float radius) {
     radius_ = radius;
 }
 
-double Obstacle::GetRadius() {
+float Obstacle::GetRadius() {
     return radius_;
 }

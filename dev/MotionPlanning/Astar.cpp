@@ -2,7 +2,7 @@
 #include "Astar.h"
 
 struct CompareNodesByDistance {
-    bool operator()(const pair<int, double>& a, const pair<int, double>& b) const {
+    bool operator()(const pair<int, float>& a, const pair<int, float>& b) const {
         return a.second > b.second;
     }
 };
@@ -12,14 +12,14 @@ Astar::Astar(vector<Node> nodeList, vector<Robot> &robotList, vector<Obstacle> &
     obstacles_ = obstacleList;
 
     for (int i = 0; i < robotList.size(); i++) {
-        vector<double> gcost;
-        vector<double> heur;
-        vector<double> fcost;
+        vector<float> gcost;
+        vector<float> heur;
+        vector<float> fcost;
 
         vector<Node> path_;
 
         // radius of the current robot we are calculating for
-        double robotRadius = robotList[i].GetRadius();
+        float robotRadius = robotList[i].GetRadius();
 
         // this robot's index inside our nodeList
         int robotIndex = 2 * i;
@@ -31,16 +31,16 @@ Astar::Astar(vector<Node> nodeList, vector<Robot> &robotList, vector<Obstacle> &
         int targetNode = nodeList_[robotIndex + 1].GetID();
 
         // setting up our priority queue to sort by fcost
-        std::priority_queue<pair<int, double>, vector<pair<int, double>>, CompareNodesByDistance> pq;
+        std::priority_queue<pair<int, float>, vector<pair<int, float>>, CompareNodesByDistance> pq;
 
         // two sets which will contain completed and currently enqueued nodes
         vector<int> closedSet;
         vector<int> openSet;
 
         for (int i = 0; i < nodeList_.size(); i++) {
-            gcost.push_back(std::numeric_limits<double>::max());
+            gcost.push_back(std::numeric_limits<float>::max());
             heur.push_back(0);
-            fcost.push_back(std::numeric_limits<double>::max());
+            fcost.push_back(std::numeric_limits<float>::max());
         }
 
         // our first node has a graph cost of 0 and a heuristic cost
@@ -69,7 +69,7 @@ Astar::Astar(vector<Node> nodeList, vector<Robot> &robotList, vector<Obstacle> &
             openSet.erase(std::remove(openSet.begin(), openSet.end(), curr), openSet.end());
 
             // get our current nodes adjacency list
-            vector<pair<int, double>> adj_list = nodeList_[curr].GetNeighborList();
+            vector<pair<int, float>> adj_list = nodeList_[curr].GetNeighborList();
 
             for (int j = 0; j < adj_list.size(); j++) {
 
@@ -78,12 +78,12 @@ Astar::Astar(vector<Node> nodeList, vector<Robot> &robotList, vector<Obstacle> &
                 int nbr = adj_list[j].first;
 
                 // if the line inbetween nodes is too close to obstacles
-                if (ObstacleInbetween(robotRadius, nodeList[curr], nodeList[nbr])) {
+                if (ObstacleInbetween(robotRadius, nodeList_[curr], nodeList_[nbr])) {
                     continue;
                 }
 
                 // weight is the value of the edge between curr and nbr
-                double weight = DistanceInbetween(nbr, curr);
+                float weight = DistanceInbetween(nbr, curr);
 
                 // if we have already completed this node
                 if (std::find(closedSet.begin(), closedSet.end(), nbr) != closedSet.end()) {
@@ -95,7 +95,7 @@ Astar::Astar(vector<Node> nodeList, vector<Robot> &robotList, vector<Obstacle> &
                     openSet.push_back(nbr);
                 }
 
-                double tentative_gcost = gcost[curr] + weight;
+                float tentative_gcost = gcost[curr] + weight;
                 if (tentative_gcost >= gcost[nbr]) {
                     continue; // this is not a better path
                 }
@@ -123,29 +123,29 @@ Astar::Astar(vector<Node> nodeList, vector<Robot> &robotList, vector<Obstacle> &
 
 Astar::~Astar() {}
 
-double Astar::CalculateHeuristic(int i, int j) {
+float Astar::CalculateHeuristic(int i, int j) {
     Point3 uLoc = nodeList_[i].GetLocation();
     Point3 vLoc = nodeList_[j].GetLocation();
-    return ((double)sqrt(pow(uLoc.x() - vLoc.x(), 2) + pow(uLoc.y() - vLoc.y(), 2) + pow(uLoc.z() - vLoc.z(), 2)));
+    return ((float)sqrt(pow(uLoc.x() - vLoc.x(), 2) + pow(uLoc.y() - vLoc.y(), 2) + pow(uLoc.z() - vLoc.z(), 2)));
 }
 
-double Astar::DistanceInbetween(int i, int j) {
+float Astar::DistanceInbetween(int i, int j) {
     Point3 uLoc = nodeList_[i].GetLocation();
     Point3 vLoc = nodeList_[j].GetLocation();
-    return ((double)sqrt(pow(uLoc.x() - vLoc.x(), 2) + pow(uLoc.y() - vLoc.y(), 2) + pow(uLoc.z() - vLoc.z(), 2)));
+    return ((float)sqrt(pow(uLoc.x() - vLoc.x(), 2) + pow(uLoc.y() - vLoc.y(), 2) + pow(uLoc.z() - vLoc.z(), 2)));
 }
 
-bool Astar::ObstacleInbetween(double rad, Node curr, Node nbr) {
-    for (Obstacle &o : obstacles_) {
+bool Astar::ObstacleInbetween(float rad, Node curr, Node nbr) {
+    for (Obstacle o : obstacles_) {
         Vector3 nodeVec = nbr.GetLocation() - curr.GetLocation();
         Vector3 nodeCirc = o.GetPosition() - curr.GetLocation();
 
-        double scalConV = nodeCirc.Dot(nodeVec.ToUnit());
+        float scalConV = nodeCirc.Dot(nodeVec.ToUnit());
         Vector3 ConV = scalConV * nodeVec.ToUnit();
 
         Vector3 distFromCircCenter = nodeCirc - ConV;
 
-        double distance = distFromCircCenter.Length();
+        float distance = distFromCircCenter.Length();
 
         if (distance < o.GetRadius() + rad) {
             return true;

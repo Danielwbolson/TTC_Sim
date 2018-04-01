@@ -28,8 +28,6 @@ public:
 
     void OnPauseBtnPressed();
 
-    void DrawUsingNanoVG(NVGcontext *ctx);
-
     void DrawUsingOpenGL();
 
     void DrawRobots();

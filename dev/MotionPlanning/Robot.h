@@ -10,7 +10,7 @@
 class Robot {
 public:
     Robot();
-    Robot(Point3 position, Point3 target, double radius);
+    Robot(Point3 position, Point3 target, float radius);
     ~Robot();
 
     Point3 GetPosition();
@@ -20,10 +20,10 @@ public:
 
     void SetObstacles(std::vector<Obstacle>);
 
-    void UpdatePosition(double dt);
+    void UpdatePosition(float dt);
 
     Vector3 GetSize();
-    double GetRadius();
+    float GetRadius();
     std::vector<Node> Robot::GetPath();
 
     bool CanTravelTo(Node target);
@@ -33,7 +33,7 @@ public:
 private:
     Point3 position_;
     Point3 target_;
-    double radius_;
+    float radius_;
     int pathIndex_;
     bool finishedPathing;
 
@@ -43,7 +43,7 @@ private:
     Node targetNode_;
     Node furthestNode_;
 
-    double velocity_ = 1;
+    float velocity_ = 1;
 };
 
 #endif // ROBOT_H_

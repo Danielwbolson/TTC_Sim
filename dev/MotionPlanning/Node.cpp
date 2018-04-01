@@ -3,7 +3,7 @@
 
 Node::Node() : parent_(NULL){}
 
-Node::Node(int id, Point3 location, std::vector<std::pair<int, double>> neighborList) {
+Node::Node(int id, Point3 location, std::vector<std::pair<int, float>> neighborList) {
     id_ = id;
     location_ = location;
     neighborList_ = neighborList;
@@ -27,14 +27,14 @@ void Node::Location(Point3 location) {
     location_ = location;
 }
 
-std::vector<std::pair<int, double>> Node::GetNeighborList() const {
+std::vector<std::pair<int, float>> Node::GetNeighborList() const {
     return neighborList_;
 }
 
-void Node::NeighborList(std::vector<std::pair<int, double>> neighborList) {
+void Node::NeighborList(std::vector<std::pair<int, float>> neighborList) {
     neighborList_ = neighborList;
 }
 
-void Node::AddToNeighborList(std::pair<int, double> n) {
+void Node::AddToNeighborList(std::pair<int, float> n) {
     neighborList_.push_back(n);
 }
