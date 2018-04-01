@@ -108,7 +108,7 @@ Astar::Astar(vector<Node> nodeList, vector<Robot> &robotList, vector<Obstacle> &
             }
         }
 
-        while (nodeList_[targetNode].parent_ != startNode) {
+        while (nodeList_[targetNode].parent_ != startNode && nodeList_[nodeList_[targetNode].parent_].parent_ != targetNode) {
             path_.push_back(nodeList_[targetNode]);
             targetNode = nodeList_[targetNode].parent_;
         }

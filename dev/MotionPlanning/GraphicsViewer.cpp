@@ -31,8 +31,9 @@ GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning",false
     robotList_.push_back(Robot(Point3(5, 10, 0), Point3(5, 0, 0), 1));
 
     // Instantiate our Obstacle List
-    obstacleList_.push_back(Obstacle(2, Point3(5, 5, 0)));
-    obstacleList_.push_back(Obstacle(1, Point3(3, 8, 0)));
+    obstacleList_.push_back(Obstacle(1, Point3(5, 5, 0)));
+    obstacleList_.push_back(Obstacle(0.5, Point3(3, 8, 0)));
+    obstacleList_.push_back(Obstacle(0.5, Point3(8, 8, 0)));
 
     // Instantiate our PRM using our robots position, target position
     // and obstacles along the way
