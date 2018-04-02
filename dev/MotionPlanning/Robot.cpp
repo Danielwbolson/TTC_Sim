@@ -47,9 +47,9 @@ void Robot::UpdatePosition(float dt) {
 
     Vector3 dir = (targetNode_.GetLocation() - position_).ToUnit();
 
-    position_ = Point3(position_.x() + dir.x() * velocity_ * dt, 
-                       position_.y() + dir.y() * velocity_ * dt, 
-                       position_.z() + dir.z() * velocity_ * dt);
+    position_ = Point3(position_.x() + dir.x() * speed_ * dt, 
+                       position_.y() + dir.y() * speed_ * dt,
+                       position_.z() + dir.z() * speed_ * dt);
 
     float distance = (position_ - targetNode_.GetLocation()).Length();
     if (distance < 0.01) {

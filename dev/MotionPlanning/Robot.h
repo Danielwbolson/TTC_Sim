@@ -54,7 +54,7 @@ private:
     Node targetNode_;
     Node furthestNode_;
 
-    float velocity_ = 1;
+    float speed_ = 1;
 };
 
 #endif // ROBOT_H_

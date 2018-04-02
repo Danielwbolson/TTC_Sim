@@ -45,8 +45,6 @@ GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning",false
         r.SetAstar(astar_);
         r.SetObstacles(obstacleList_);
     }
-
-    ConstructIndexes(*prm_->GetNodeList());
 }
 
 
@@ -92,7 +90,7 @@ void GraphicsViewer::ConstructIndexes(std::vector<Node> nodes) {
     m_.SetNormals(normals);
     m_.SetTexCoords(0, texcoords);
     m_.SetIndices(indices);
-    //m_.UpdateGPUMemory();
+    m_.UpdateGPUMemory();
 }
 
 void GraphicsViewer::InitNanoGUI() {
@@ -104,6 +102,7 @@ void GraphicsViewer::InitNanoGUI() {
 }
 
 void GraphicsViewer::InitOpenGL() {
+    ConstructIndexes(*prm_->GetNodeList());
     // Set up the camera in a good position to see the entire simulation
     projMatrix_ = Matrix4::Perspective(90, aspect_ratio(), 1, 1000);
     viewMatrix_ = Matrix4::LookAt(Point3(5, 5, 10), Point3(5, 6, 0), Vector3(0, 0, 1));
