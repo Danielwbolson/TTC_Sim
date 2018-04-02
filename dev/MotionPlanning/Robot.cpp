@@ -1,16 +1,18 @@
 
 #include "Robot.h"
+#include "Astar.h"
 
 Robot::Robot() : position_(Point3(0, 0, 0)), radius_(0.5), pathIndex_(0) {
 
 }
 
-Robot::Robot(Point3 position, Point3 target, float radius) {
+Robot::Robot(Point3 position, Point3 target, float radius, int id) {
     position_ = position;
     radius_ = radius;
     target_ = target;
     pathIndex_ = 0;
     finishedPathing = false;
+    id_ = id;
 }
 
 Robot::~Robot() {
@@ -38,6 +40,7 @@ void Robot::SetObstacles(std::vector<Obstacle> obstacles) {
 void Robot::UpdatePosition(float dt) {
     // move towards furthest node in path that you can reach
     // tracking that node with targetNode_
+
     if (!finishedPathing) {
         targetNode_ = NextNode();
     }
@@ -99,4 +102,11 @@ Node Robot::NextNode() {
         NextNode();
     }
     return targetNode_;
+}
+
+void Robot::SetAstar(Astar* astar) {
+    astar_ = astar;
+    path_ = astar_->CalculatePath(radius_, id_);
+    targetNode_ = path_[0];
+    furthestNode_ = path_[1];
 }

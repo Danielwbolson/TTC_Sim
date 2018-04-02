@@ -3,14 +3,18 @@
 #define ROBOT_H_
 
 #include <mingfx.h>
+#include <future>
 
 #include "Node.h"
 #include "Obstacle.h"
 
+class PRM;
+class Astar;
+
 class Robot {
 public:
     Robot();
-    Robot(Point3 position, Point3 target, float radius);
+    Robot(Point3 position, Point3 target, float radius, int id);
     ~Robot();
 
     Point3 GetPosition();
@@ -30,6 +34,8 @@ public:
 
     Node NextNode();
 
+    void SetAstar(Astar* astar);
+
 private:
     Point3 position_;
     Point3 target_;
@@ -37,6 +43,11 @@ private:
     int pathIndex_;
     bool finishedPathing;
 
+    int id_;
+
+    Astar* astar_;
+
+    std::vector<Node>* nodeList_;
     std::vector<Node> path_;
     std::vector<Obstacle> obstacleList_;
 

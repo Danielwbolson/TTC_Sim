@@ -22,7 +22,7 @@ public:
 
     bool CanConnect(Node x, Node y);
 
-    std::vector<Node> const & GetNodeList() const;
+    std::vector<Node>* GetNodeList();
 
 private:
     bool WithinDistance(Node x, Node y);

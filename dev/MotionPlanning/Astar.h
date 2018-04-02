@@ -17,8 +17,9 @@ struct CompareNodesByDistance;
 
 class Astar {
 public:
-    Astar() {}
-    Astar(vector<Node> nodeList, vector<Robot> &robotList, vector<Obstacle> &obstacleList);
+    Astar(vector<Node>* nodeList, vector<Obstacle>* obstacleList);
+
+    vector<Node> CalculatePath(float rad, int id);
 
     bool ObstacleInbetween(float rad, Node curr, Node nbr);
 
@@ -28,8 +29,8 @@ public:
     ~Astar();
 
 private:
-    vector<Node> nodeList_;
-    vector<Obstacle> obstacles_;
+    vector<Node>* nodeList_;
+    vector<Obstacle>* obstacles_;
 };
 
 #endif // ASTAR_H_

@@ -48,8 +48,8 @@ PRM::~PRM() {
 
 }
 
-std::vector<Node> const & PRM::GetNodeList() const {
-    return nodeList_;
+std::vector<Node>* PRM::GetNodeList() {
+    return &nodeList_;
 }
 
 float PRM::DistanceBetween(Point3 a, Point3 b) {

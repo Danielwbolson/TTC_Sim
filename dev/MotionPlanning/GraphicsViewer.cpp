@@ -25,10 +25,10 @@ GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning",false
     m_.LoadFromOBJ(Platform::FindMinGfxDataFile("teapot.obj"));
 
     // Instantiate our Robots
-    robotList_.push_back(Robot(Point3(0, 0, 0), Point3(10, 10, 0), 0.5));
-    robotList_.push_back(Robot(Point3(0, 5, 0), Point3(10, 5, 0), 0.5));
-    robotList_.push_back(Robot(Point3(0, 10, 0), Point3(10, 0, 0), 1));
-    robotList_.push_back(Robot(Point3(5, 10, 0), Point3(5, 0, 0), 1));
+    robotList_.push_back(Robot(Point3(0, 0, 0), Point3(10, 10, 0), 0.5, 0));
+    robotList_.push_back(Robot(Point3(0, 5, 0), Point3(10, 5, 0), 0.5, 2));
+    robotList_.push_back(Robot(Point3(0, 10, 0), Point3(10, 0, 0), 1, 4));
+    robotList_.push_back(Robot(Point3(5, 10, 0), Point3(5, 0, 0), 1, 6));
 
     // Instantiate our Obstacle List
     obstacleList_.push_back(Obstacle(1, Point3(5, 5, 0)));
@@ -39,14 +39,14 @@ GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning",false
     // and obstacles along the way
     prm_ = new PRM(robotList_, obstacleList_);
 
-    ConstructIndexes(prm_->GetNodeList());
-
-    // Using our PRM, create a shortest path using Astar
-    astar_ = new Astar(prm_->GetNodeList(), robotList_, obstacleList_);
+    astar_ = new Astar(prm_->GetNodeList(), &obstacleList_);
 
     for (Robot &r : robotList_) {
+        r.SetAstar(astar_);
         r.SetObstacles(obstacleList_);
     }
+
+    ConstructIndexes(*prm_->GetNodeList());
 }
 
 
