@@ -103,7 +103,7 @@ vector<Node> Astar::CalculatePath(float rad, int id) {
         }
     }
 
-    while ((*nodeList_)[targetNode].parent_ != startNode && (*nodeList_)[(*nodeList_)[targetNode].parent_].parent_ != targetNode) {
+    while (targetNode != startNode) {
         path_.push_back((*nodeList_)[targetNode]);
         targetNode = (*nodeList_)[targetNode].parent_;
     }
@@ -133,14 +133,18 @@ bool Astar::ObstacleInbetween(float rad, Node curr, Node nbr) {
         Vector3 nodeCirc = o.GetPosition() - curr.GetLocation();
 
         float scalConV = nodeCirc.Dot(nodeVec.ToUnit());
-        Vector3 ConV = scalConV * nodeVec.ToUnit();
 
-        Vector3 distFromCircCenter = nodeCirc - ConV;
+        if (scalConV > 0) {
 
-        float distance = distFromCircCenter.Length();
+            Vector3 ConV = scalConV * nodeVec.ToUnit();
 
-        if (distance < o.GetRadius() + rad) {
-            return true;
+            Vector3 distFromCircCenter = nodeCirc - ConV;
+
+            float distance = distFromCircCenter.Length();
+
+            if (distance < o.GetRadius() + rad) {
+                return true;
+            }
         }
     }
     return false;

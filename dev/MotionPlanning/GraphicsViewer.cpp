@@ -4,7 +4,7 @@
 #include <nanogui/nanogui.h>
 #include <iostream>
 
-GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning",false), paused_(false) {
+GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning", true), paused_(false) {
 
     DefaultShader::LightProperties light;
     light.position = Point3(5, 5, 0);
@@ -29,11 +29,15 @@ GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning",false
     robotList_.push_back(Robot(Point3(0, 5, 0), Point3(10, 5, 0), 0.5, 2));
     robotList_.push_back(Robot(Point3(0, 10, 0), Point3(10, 0, 0), 1, 4));
     robotList_.push_back(Robot(Point3(5, 10, 0), Point3(5, 0, 0), 1, 6));
+    robotList_.push_back(Robot(Point3(10, 10, 0), Point3(0, 0, 0), 0.5, 8));
+    robotList_.push_back(Robot(Point3(10, 5, 0), Point3(0, 5, 0), 0.5, 10));
+    robotList_.push_back(Robot(Point3(10, 0, 0), Point3(0, 10, 0), 1, 12));
+    robotList_.push_back(Robot(Point3(5, 0, 0), Point3(5, 10, 0), 1, 14));
 
     // Instantiate our Obstacle List
-    obstacleList_.push_back(Obstacle(1, Point3(5, 5, 0)));
-    obstacleList_.push_back(Obstacle(0.5, Point3(3, 8, 0)));
-    obstacleList_.push_back(Obstacle(0.5, Point3(8, 8, 0)));
+    //obstacleList_.push_back(Obstacle(0.01, Point3(5, 5, 0)));
+    //obstacleList_.push_back(Obstacle(0.5, Point3(3, 8, 0)));
+    //obstacleList_.push_back(Obstacle(0.5, Point3(8, 8, 0)));
 
     // Instantiate our PRM using our robots position, target position
     // and obstacles along the way
@@ -114,6 +118,7 @@ void GraphicsViewer::InitOpenGL() {
 void GraphicsViewer::UpdateSimulation(double dt) {
     if (!paused_) {
         for (Robot &r : robotList_) {
+            r.ComputeForces(&robotList_);
             r.UpdatePosition(dt);
         }
     }

@@ -1,57 +1,57 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\main.cpp">
+    <ClCompile Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\GraphicsViewer.cpp">
+    <ClCompile Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\GraphicsViewer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Astar.cpp">
+    <ClCompile Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Astar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\PRM.cpp">
+    <ClCompile Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\PRM.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Node.cpp">
+    <ClCompile Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Node.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Obstacle.cpp">
+    <ClCompile Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Obstacle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Robot.cpp">
+    <ClCompile Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Robot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\GraphicsViewer.h">
+    <ClInclude Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\GraphicsViewer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Astar.h">
+    <ClInclude Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Astar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\PRM.h">
+    <ClInclude Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\PRM.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Node.h">
+    <ClInclude Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Obstacle.h">
+    <ClInclude Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Obstacle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Robot.h">
+    <ClInclude Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Robot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\CMakeLists.txt" />
+    <CustomBuild Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{A22F12D4-D848-3577-A136-89A202EE4A39}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{566D4611-A40F-36CC-B7DB-A0AD52E9F1EE}</UniqueIdentifier>
+      <UniqueIdentifier>{3A2BD13B-D7BA-365B-906C-4C7DDA25DA77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{161F18D0-36D2-3FAB-ADEC-04A4750D9493}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

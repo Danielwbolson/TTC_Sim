@@ -53,7 +53,7 @@ std::vector<Node>* PRM::GetNodeList() {
 }
 
 float PRM::DistanceBetween(Point3 a, Point3 b) {
-    float distance = sqrt(pow(a.x() - b.x(), 2) + pow(a.y() - b.y(), 2));
+    float distance = sqrt(pow(a.x() - b.x(), 2) + pow(a.y() - b.y(), 2) + pow(a.z() - b.z(), 2));
     return distance;
 }
 
@@ -71,7 +71,7 @@ bool PRM::WithinObstacle(Point3 x) {
         Point3 o_loc = o.GetPosition();
 
         float distance = sqrt(pow(x[0] - o_loc[0], 2) + pow(x[1] - o_loc[1], 2)
-            + pow(x[2] + o_loc[2], 2));
+            + pow(x[2] - o_loc[2], 2));
 
         if (distance < o.GetRadius()) {
             return true;

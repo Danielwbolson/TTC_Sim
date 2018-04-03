@@ -11,7 +11,6 @@ Robot::Robot(Point3 position, Point3 target, float radius, int id) {
     radius_ = radius;
     target_ = target;
     pathIndex_ = 0;
-    finishedPathing = false;
     id_ = id;
 }
 
@@ -46,15 +45,71 @@ void Robot::UpdatePosition(float dt) {
     }
 
     Vector3 dir = (targetNode_.GetLocation() - position_).ToUnit();
-
-    position_ = Point3(position_.x() + dir.x() * speed_ * dt, 
-                       position_.y() + dir.y() * speed_ * dt,
-                       position_.z() + dir.z() * speed_ * dt);
+    velocity_ = velocity_ + totalForce_ * dt;
+    position_ = Point3(position_.x() + velocity_.x() * dt, 
+                       position_.y() + velocity_.y() * dt,
+                       position_.z() + velocity_.z() * dt);
 
     float distance = (position_ - targetNode_.GetLocation()).Length();
     if (distance < 0.01) {
         position_ = targetNode_.GetLocation();
     }
+}
+
+void Robot::ComputeForces(std::vector<Robot>* robotList) {
+    totalForce_ = Vector3(0, 0, 0);
+    for (Robot r : *robotList) {
+        if (r.GetPosition() == position_) {
+            continue;
+        }
+        Vector3 avoidForce_ = AvoidForce(r.GetPosition(), r.GetVelocity(), r.GetRadius());
+        Vector3 goalVelocity_ = ((targetNode_.GetLocation() - position_).ToUnit()) * speed_;
+        Vector3 goalForce_ = 2 * (goalVelocity_ - velocity_);
+        totalForce_ = totalForce_ + avoidForce_ + goalForce_;
+    }
+
+    for (Obstacle o : obstacleList_) {
+        Vector3 avoidForce_ = AvoidForce(o.GetPosition(), Vector3(0, 0, 0), o.GetRadius());
+        Vector3 goalVelocity_ = ((targetNode_.GetLocation() - position_).ToUnit()) * speed_;
+        Vector3 goalForce_ = 2 * (goalVelocity_ - velocity_);
+        totalForce_ = totalForce_ + avoidForce_ + goalForce_;
+    }
+
+}
+
+Vector3 Robot::AvoidForce(Point3 rPos, Vector3 rVel, float rRad) {
+    float tau = TimeToCollision(rPos, rVel, rRad);
+    if (tau > timeHorizon_) {
+        return Vector3(0, 0, 0);
+    }
+    Vector3 dir =
+        Vector3((position_[0] + velocity_[0] * tau) - (rPos[0] + rVel[0] * tau),
+        (position_[1] + velocity_[1] * tau) - (rPos[1] + rVel[1] * tau),
+            (position_[2] + velocity_[2] * tau) - (rPos[2] + rVel[2] * tau));
+
+    Vector3 fAvoid = (timeHorizon_ - tau) / tau * dir.ToUnit();
+    return fAvoid;
+}
+
+float Robot::TimeToCollision(Point3 rPos, Vector3 rVel, float r) {
+    float rad = radius_ + r;
+    Vector3 positionDif = Vector3(rPos[0] - position_[0], rPos[1] - position_[1], rPos[2] - position_[2]);
+    float c = positionDif.Dot(positionDif) - pow(rad, 2);
+    if (c < 0) {
+        return 0;
+    }
+    Vector3 v = velocity_ - rVel;
+    float a = v.Dot(v);
+    float b = positionDif.Dot(v);
+    float discr = b * b - a * c;
+    if (discr <= 0) {
+        return timeHorizon_ + 1;
+    }
+    float tau = (b - sqrt(discr)) / a;
+    if (tau < 0 || std::isnan(tau)) {
+        return timeHorizon_ + 1;
+    }
+    return tau;
 }
 
 Vector3 Robot::GetSize() {
@@ -69,20 +124,28 @@ std::vector<Node> Robot::GetPath() {
     return path_;
 }
 
+Vector3 Robot::GetVelocity() const {
+    return velocity_;
+}
+
 bool Robot::CanTravelTo(Node target) {
     for (Obstacle o : obstacleList_) {
         Vector3 nodeVec = target.GetLocation() - position_;
         Vector3 nodeCirc = o.GetPosition() - position_;
 
         float scalConV = nodeCirc.Dot(nodeVec.ToUnit());
-        Vector3 ConV = scalConV * nodeVec.ToUnit();
 
-        Vector3 distFromCircCenter = nodeCirc - ConV;
+        if (scalConV > 0) {
 
-        float distance = distFromCircCenter.Length();
+            Vector3 ConV = scalConV * nodeVec.ToUnit();
 
-        if (distance < o.GetRadius() + radius_) {
-            return false;
+            Vector3 distFromCircCenter = nodeCirc - ConV;
+
+            float distance = distFromCircCenter.Length();
+
+            if (distance < o.GetRadius() + radius_) {
+                return false;
+            }
         }
     }
     return true;
@@ -99,7 +162,7 @@ Node Robot::NextNode() {
         targetNode_ = furthestNode_;
         pathIndex_++;
         furthestNode_ = path_[pathIndex_];
-        NextNode();
+         return NextNode();
     }
     return targetNode_;
 }

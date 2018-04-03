@@ -4,6 +4,7 @@
 
 #include <mingfx.h>
 #include <future>
+#include <time.h>
 
 #include "Node.h"
 #include "Obstacle.h"
@@ -25,10 +26,15 @@ public:
     void SetObstacles(std::vector<Obstacle>);
 
     void UpdatePosition(float dt);
+    void ComputeForces(std::vector<Robot>* robotList);
+    float TimeToCollision(Point3, Vector3, float);
+    Vector3 AvoidForce(Point3 rPos, Vector3 rVel, float rRad);
+
 
     Vector3 GetSize();
     float GetRadius();
     std::vector<Node> Robot::GetPath();
+    Vector3 GetVelocity() const;
 
     bool CanTravelTo(Node target);
 
@@ -38,10 +44,20 @@ public:
 
 private:
     Point3 position_;
+    Vector3 goalVelocity_;
+    Vector3 velocity_ = Vector3(0, 0, 0);
+    float speed_ = 1;
+
     Point3 target_;
     float radius_;
     int pathIndex_;
-    bool finishedPathing;
+    bool finishedPathing = false;
+
+    float timeHorizon_ = 5;
+
+    Vector3 totalForce_;
+    Vector3 goalForce_;
+    Vector3 avoidForce_;
 
     int id_;
 
@@ -53,8 +69,6 @@ private:
 
     Node targetNode_;
     Node furthestNode_;
-
-    float speed_ = 1;
 };
 
 #endif // ROBOT_H_

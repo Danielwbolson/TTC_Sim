@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{1F3F7A9F-1627-3CC1-8F60-E729345A1405}</ProjectGuid>
+    <ProjectGuid>{32A3F965-28C1-3E4C-91A5-D1722E87C131}</ProjectGuid>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
     <Platform>x64</Platform>
@@ -56,25 +56,25 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MotionPlanning.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MotionPlanning</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MotionPlanning.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MotionPlanning</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\MinSizeRel\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">MotionPlanning.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">MotionPlanning</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\RelWithDebInfo\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\RelWithDebInfo\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">MotionPlanning.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">MotionPlanning</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
@@ -83,7 +83,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\MinGfx-1.0;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Daniel Olson\Desktop\repo-olso7118\include\MinGfx-1.0;D:\Daniel Olson\Desktop\repo-olso7118\include;D:\Daniel Olson\Desktop\repo-olso7118\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Debug/</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -101,10 +101,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;USE_OPENGL;USE_NANOGUI;NANOGUI_GLAD;GLAD_GLAPI_EXPORT;ALLOW_INIT_GFX_CTX_IN_CONSTRUCTOR;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\MinGfx-1.0;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Daniel Olson\Desktop\repo-olso7118\include\MinGfx-1.0;D:\Daniel Olson\Desktop\repo-olso7118\include;D:\Daniel Olson\Desktop\repo-olso7118\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\MinGfx-1.0;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Daniel Olson\Desktop\repo-olso7118\include\MinGfx-1.0;D:\Daniel Olson\Desktop\repo-olso7118\include;D:\Daniel Olson\Desktop\repo-olso7118\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -112,13 +112,13 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\lib\MinGfx-1.0\MinGfxd.lib;opengl32.lib;glu32.lib;opengl32.lib;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\lib\nanogui.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>D:\Daniel Olson\Desktop\repo-olso7118\lib\MinGfx-1.0\MinGfxd.lib;opengl32.lib;glu32.lib;opengl32.lib;D:\Daniel Olson\Desktop\repo-olso7118\lib\nanogui.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/Debug/MotionPlanning.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/Debug/MotionPlanning.pdb</ProgramDataBaseFile>
+      <ImportLibrary>D:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/Debug/MotionPlanning.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/Debug/MotionPlanning.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -127,7 +127,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\MinGfx-1.0;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Daniel Olson\Desktop\repo-olso7118\include\MinGfx-1.0;D:\Daniel Olson\Desktop\repo-olso7118\include;D:\Daniel Olson\Desktop\repo-olso7118\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Release/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <CppLanguageStandard>c++1y</CppLanguageStandard>
@@ -140,15 +140,14 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;USE_OPENGL;USE_NANOGUI;NANOGUI_GLAD;GLAD_GLAPI_EXPORT;ALLOW_INIT_GFX_CTX_IN_CONSTRUCTOR;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <DebugInformationFormat>
-      </DebugInformationFormat>
+      <DebugInformationFormat></DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;USE_OPENGL;USE_NANOGUI;NANOGUI_GLAD;GLAD_GLAPI_EXPORT;ALLOW_INIT_GFX_CTX_IN_CONSTRUCTOR;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\MinGfx-1.0;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Daniel Olson\Desktop\repo-olso7118\include\MinGfx-1.0;D:\Daniel Olson\Desktop\repo-olso7118\include;D:\Daniel Olson\Desktop\repo-olso7118\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\MinGfx-1.0;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Daniel Olson\Desktop\repo-olso7118\include\MinGfx-1.0;D:\Daniel Olson\Desktop\repo-olso7118\include;D:\Daniel Olson\Desktop\repo-olso7118\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -156,13 +155,13 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\lib\MinGfx-1.0\MinGfxd.lib;opengl32.lib;glu32.lib;opengl32.lib;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\lib\nanogui.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>D:\Daniel Olson\Desktop\repo-olso7118\lib\MinGfx-1.0\MinGfxd.lib;opengl32.lib;glu32.lib;opengl32.lib;D:\Daniel Olson\Desktop\repo-olso7118\lib\nanogui.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/Release/MotionPlanning.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/Release/MotionPlanning.pdb</ProgramDataBaseFile>
+      <ImportLibrary>D:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/Release/MotionPlanning.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/Release/MotionPlanning.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -171,7 +170,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\MinGfx-1.0;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Daniel Olson\Desktop\repo-olso7118\include\MinGfx-1.0;D:\Daniel Olson\Desktop\repo-olso7118\include;D:\Daniel Olson\Desktop\repo-olso7118\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <CppLanguageStandard>c++1y</CppLanguageStandard>
@@ -184,15 +183,14 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;USE_OPENGL;USE_NANOGUI;NANOGUI_GLAD;GLAD_GLAPI_EXPORT;ALLOW_INIT_GFX_CTX_IN_CONSTRUCTOR;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <DebugInformationFormat>
-      </DebugInformationFormat>
+      <DebugInformationFormat></DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;USE_OPENGL;USE_NANOGUI;NANOGUI_GLAD;GLAD_GLAPI_EXPORT;ALLOW_INIT_GFX_CTX_IN_CONSTRUCTOR;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\MinGfx-1.0;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Daniel Olson\Desktop\repo-olso7118\include\MinGfx-1.0;D:\Daniel Olson\Desktop\repo-olso7118\include;D:\Daniel Olson\Desktop\repo-olso7118\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\MinGfx-1.0;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Daniel Olson\Desktop\repo-olso7118\include\MinGfx-1.0;D:\Daniel Olson\Desktop\repo-olso7118\include;D:\Daniel Olson\Desktop\repo-olso7118\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -200,13 +198,13 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\lib\MinGfx-1.0\MinGfxd.lib;opengl32.lib;glu32.lib;opengl32.lib;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\lib\nanogui.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>D:\Daniel Olson\Desktop\repo-olso7118\lib\MinGfx-1.0\MinGfxd.lib;opengl32.lib;glu32.lib;opengl32.lib;D:\Daniel Olson\Desktop\repo-olso7118\lib\nanogui.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/MinSizeRel/MotionPlanning.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/MinSizeRel/MotionPlanning.pdb</ProgramDataBaseFile>
+      <ImportLibrary>D:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/MinSizeRel/MotionPlanning.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/MinSizeRel/MotionPlanning.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -215,7 +213,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\MinGfx-1.0;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Daniel Olson\Desktop\repo-olso7118\include\MinGfx-1.0;D:\Daniel Olson\Desktop\repo-olso7118\include;D:\Daniel Olson\Desktop\repo-olso7118\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <CppLanguageStandard>c++1y</CppLanguageStandard>
@@ -232,10 +230,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;USE_OPENGL;USE_NANOGUI;NANOGUI_GLAD;GLAD_GLAPI_EXPORT;ALLOW_INIT_GFX_CTX_IN_CONSTRUCTOR;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\MinGfx-1.0;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Daniel Olson\Desktop\repo-olso7118\include\MinGfx-1.0;D:\Daniel Olson\Desktop\repo-olso7118\include;D:\Daniel Olson\Desktop\repo-olso7118\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\MinGfx-1.0;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Daniel Olson\Desktop\repo-olso7118\include\MinGfx-1.0;D:\Daniel Olson\Desktop\repo-olso7118\include;D:\Daniel Olson\Desktop\repo-olso7118\include\nanovg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -243,13 +241,13 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\lib\MinGfx-1.0\MinGfxd.lib;opengl32.lib;glu32.lib;opengl32.lib;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\lib\nanogui.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>D:\Daniel Olson\Desktop\repo-olso7118\lib\MinGfx-1.0\MinGfxd.lib;opengl32.lib;glu32.lib;opengl32.lib;D:\Daniel Olson\Desktop\repo-olso7118\lib\nanogui.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/RelWithDebInfo/MotionPlanning.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/RelWithDebInfo/MotionPlanning.pdb</ProgramDataBaseFile>
+      <ImportLibrary>D:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/RelWithDebInfo/MotionPlanning.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/RelWithDebInfo/MotionPlanning.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -257,10 +255,10 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\CMakeLists.txt">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/CMakeLists.txt</Message>
+    <CustomBuild Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning -BC:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build --check-stamp-file C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" "-HD:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning" "-BD:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build" --check-stamp-file "D:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -268,12 +266,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/CMakeLists.txt;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\CMakeLists.txt;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.11.0-rc4\CMakeSystem.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeSystemSpecificInitialize.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.11.0-rc4\CMakeCCompiler.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.11.0-rc4\CMakeCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.11.0-rc4\CMakeRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\cmake\MessageMacros.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\lib\cmake\MinGfx-1.0\MinGfxConfigVersion.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\lib\cmake\MinGfx-1.0\MinGfxConfig.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\lib\cmake\MinGfx-1.0\MinGfxTargets.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\lib\cmake\MinGfx-1.0\MinGfxTargets-debug.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\cmake\UseOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\FindPackageMessage.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/CMakeLists.txt;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\CMakeLists.txt;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.10.2\CMakeSystem.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeSystemSpecificInitialize.cmake;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.10.2\CMakeCCompiler.cmake;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.10.2\CMakeCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Platform\Windows-MSVC.cmake;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.10.2\CMakeRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeCommonLanguageInclude.cmake;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\cmake\MessageMacros.cmake;D:\Daniel Olson\Desktop\repo-olso7118\lib\cmake\MinGfx-1.0\MinGfxConfigVersion.cmake;D:\Daniel Olson\Desktop\repo-olso7118\lib\cmake\MinGfx-1.0\MinGfxConfig.cmake;D:\Daniel Olson\Desktop\repo-olso7118\lib\cmake\MinGfx-1.0\MinGfxTargets.cmake;D:\Daniel Olson\Desktop\repo-olso7118\lib\cmake\MinGfx-1.0\MinGfxTargets-debug.cmake;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\cmake\UseOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\FindPackageMessage.cmake;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning -BC:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build --check-stamp-file C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" "-HD:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning" "-BD:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build" --check-stamp-file "D:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -281,12 +279,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/CMakeLists.txt;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\CMakeLists.txt;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.11.0-rc4\CMakeSystem.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeSystemSpecificInitialize.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.11.0-rc4\CMakeCCompiler.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.11.0-rc4\CMakeCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.11.0-rc4\CMakeRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\cmake\MessageMacros.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\lib\cmake\MinGfx-1.0\MinGfxConfigVersion.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\lib\cmake\MinGfx-1.0\MinGfxConfig.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\lib\cmake\MinGfx-1.0\MinGfxTargets.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\lib\cmake\MinGfx-1.0\MinGfxTargets-debug.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\cmake\UseOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\FindPackageMessage.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/CMakeLists.txt;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\CMakeLists.txt;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.10.2\CMakeSystem.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeSystemSpecificInitialize.cmake;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.10.2\CMakeCCompiler.cmake;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.10.2\CMakeCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Platform\Windows-MSVC.cmake;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.10.2\CMakeRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeCommonLanguageInclude.cmake;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\cmake\MessageMacros.cmake;D:\Daniel Olson\Desktop\repo-olso7118\lib\cmake\MinGfx-1.0\MinGfxConfigVersion.cmake;D:\Daniel Olson\Desktop\repo-olso7118\lib\cmake\MinGfx-1.0\MinGfxConfig.cmake;D:\Daniel Olson\Desktop\repo-olso7118\lib\cmake\MinGfx-1.0\MinGfxTargets.cmake;D:\Daniel Olson\Desktop\repo-olso7118\lib\cmake\MinGfx-1.0\MinGfxTargets-debug.cmake;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\cmake\UseOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\FindPackageMessage.cmake;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning -BC:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build --check-stamp-file C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" "-HD:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning" "-BD:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build" --check-stamp-file "D:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -294,12 +292,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/CMakeLists.txt;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\CMakeLists.txt;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.11.0-rc4\CMakeSystem.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeSystemSpecificInitialize.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.11.0-rc4\CMakeCCompiler.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.11.0-rc4\CMakeCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.11.0-rc4\CMakeRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\cmake\MessageMacros.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\lib\cmake\MinGfx-1.0\MinGfxConfigVersion.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\lib\cmake\MinGfx-1.0\MinGfxConfig.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\lib\cmake\MinGfx-1.0\MinGfxTargets.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\lib\cmake\MinGfx-1.0\MinGfxTargets-debug.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\cmake\UseOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\FindPackageMessage.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/CMakeLists.txt;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\CMakeLists.txt;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.10.2\CMakeSystem.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeSystemSpecificInitialize.cmake;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.10.2\CMakeCCompiler.cmake;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.10.2\CMakeCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Platform\Windows-MSVC.cmake;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.10.2\CMakeRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeCommonLanguageInclude.cmake;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\cmake\MessageMacros.cmake;D:\Daniel Olson\Desktop\repo-olso7118\lib\cmake\MinGfx-1.0\MinGfxConfigVersion.cmake;D:\Daniel Olson\Desktop\repo-olso7118\lib\cmake\MinGfx-1.0\MinGfxConfig.cmake;D:\Daniel Olson\Desktop\repo-olso7118\lib\cmake\MinGfx-1.0\MinGfxTargets.cmake;D:\Daniel Olson\Desktop\repo-olso7118\lib\cmake\MinGfx-1.0\MinGfxTargets-debug.cmake;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\cmake\UseOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\FindPackageMessage.cmake;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning -BC:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build --check-stamp-file C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" "-HD:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning" "-BD:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build" --check-stamp-file "D:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/build/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -307,29 +305,29 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/CMakeLists.txt;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\CMakeLists.txt;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.11.0-rc4\CMakeSystem.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeSystemSpecificInitialize.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.11.0-rc4\CMakeCCompiler.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.11.0-rc4\CMakeCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.11.0-rc4\CMakeRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\cmake\MessageMacros.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\lib\cmake\MinGfx-1.0\MinGfxConfigVersion.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\lib\cmake\MinGfx-1.0\MinGfxConfig.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\lib\cmake\MinGfx-1.0\MinGfxTargets.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\lib\cmake\MinGfx-1.0\MinGfxTargets-debug.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\cmake\UseOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.11\Modules\FindPackageMessage.cmake;C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:/Daniel Olson/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/CMakeLists.txt;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\CMakeLists.txt;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.10.2\CMakeSystem.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeSystemSpecificInitialize.cmake;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.10.2\CMakeCCompiler.cmake;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.10.2\CMakeCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Platform\Windows-MSVC.cmake;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\3.10.2\CMakeRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\CMakeCommonLanguageInclude.cmake;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\cmake\MessageMacros.cmake;D:\Daniel Olson\Desktop\repo-olso7118\lib\cmake\MinGfx-1.0\MinGfxConfigVersion.cmake;D:\Daniel Olson\Desktop\repo-olso7118\lib\cmake\MinGfx-1.0\MinGfxConfig.cmake;D:\Daniel Olson\Desktop\repo-olso7118\lib\cmake\MinGfx-1.0\MinGfxTargets.cmake;D:\Daniel Olson\Desktop\repo-olso7118\lib\cmake\MinGfx-1.0\MinGfxTargets-debug.cmake;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\cmake\UseOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.10\Modules\FindPackageMessage.cmake;D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\main.cpp" />
-    <ClCompile Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\GraphicsViewer.cpp" />
-    <ClCompile Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Astar.cpp" />
-    <ClCompile Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\PRM.cpp" />
-    <ClCompile Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Node.cpp" />
-    <ClCompile Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Obstacle.cpp" />
-    <ClCompile Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Robot.cpp" />
-    <ClInclude Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\GraphicsViewer.h" />
-    <ClInclude Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Astar.h" />
-    <ClInclude Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\PRM.h" />
-    <ClInclude Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Node.h" />
-    <ClInclude Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Obstacle.h" />
-    <ClInclude Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Robot.h" />
+    <ClCompile Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\main.cpp"  />
+    <ClCompile Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\GraphicsViewer.cpp"  />
+    <ClCompile Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Astar.cpp"  />
+    <ClCompile Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\PRM.cpp"  />
+    <ClCompile Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Node.cpp"  />
+    <ClCompile Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Obstacle.cpp"  />
+    <ClCompile Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Robot.cpp"  />
+    <ClInclude Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\GraphicsViewer.h" />
+    <ClInclude Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Astar.h" />
+    <ClInclude Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\PRM.h" />
+    <ClInclude Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Node.h" />
+    <ClInclude Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Obstacle.h" />
+    <ClInclude Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\Robot.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\Users\Daniel\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\ZERO_CHECK.vcxproj">
-      <Project>{B4EB6296-25D8-3B7B-B4EA-C0A0F7B356BB}</Project>
+    <ProjectReference Include="D:\Daniel Olson\Desktop\Spring2018\5611\Assignment3\dev\MotionPlanning\build\ZERO_CHECK.vcxproj">
+      <Project>{7CDA6FEF-43DE-31E7-9ACE-411A3C7ADCC9}</Project>
       <Name>ZERO_CHECK</Name>
     </ProjectReference>
   </ItemGroup>
