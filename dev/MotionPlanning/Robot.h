@@ -5,6 +5,7 @@
 #include <mingfx.h>
 #include <future>
 #include <time.h>
+#include <random>
 
 #include "Node.h"
 #include "Obstacle.h"
@@ -41,6 +42,8 @@ public:
     Node NextNode();
 
     void SetAstar(Astar* astar);
+
+    float RandomNum();
 
 private:
     Point3 position_;

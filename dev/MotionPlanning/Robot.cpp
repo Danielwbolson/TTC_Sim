@@ -84,10 +84,10 @@ Vector3 Robot::AvoidForce(Point3 rPos, Vector3 rVel, float rRad) {
     }
     Vector3 dir =
         Vector3((position_[0] + velocity_[0] * tau) - (rPos[0] + rVel[0] * tau),
-        (position_[1] + velocity_[1] * tau) - (rPos[1] + rVel[1] * tau),
-            (position_[2] + velocity_[2] * tau) - (rPos[2] + rVel[2] * tau));
+                (position_[1] + velocity_[1] * tau) - (rPos[1] + rVel[1] * tau),
+                (position_[2] + velocity_[2] * tau) - (rPos[2] + rVel[2] * tau));
 
-    Vector3 fAvoid = (timeHorizon_ - tau) / tau * dir.ToUnit();
+    Vector3 fAvoid = (timeHorizon_ - tau) / (tau + 0.001) * dir.ToUnit();
     return fAvoid;
 }
 
@@ -135,7 +135,7 @@ bool Robot::CanTravelTo(Node target) {
 
         float scalConV = nodeCirc.Dot(nodeVec.ToUnit());
 
-        if (scalConV > 0) {
+        if (scalConV > 0 && nodeCirc.Length() < nodeVec.Length() + o.GetRadius() + radius_) {
 
             Vector3 ConV = scalConV * nodeVec.ToUnit();
 

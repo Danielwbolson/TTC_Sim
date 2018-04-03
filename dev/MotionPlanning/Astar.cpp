@@ -134,12 +134,9 @@ bool Astar::ObstacleInbetween(float rad, Node curr, Node nbr) {
 
         float scalConV = nodeCirc.Dot(nodeVec.ToUnit());
 
-        if (scalConV > 0) {
-
+        if (scalConV > 0 && nodeCirc.Length() < nodeVec.Length() + o.GetRadius() + rad) {
             Vector3 ConV = scalConV * nodeVec.ToUnit();
-
             Vector3 distFromCircCenter = nodeCirc - ConV;
-
             float distance = distFromCircCenter.Length();
 
             if (distance < o.GetRadius() + rad) {

@@ -4,7 +4,7 @@
 #include <nanogui/nanogui.h>
 #include <iostream>
 
-GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning", true), paused_(false) {
+GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning", true), paused_(true) {
 
     DefaultShader::LightProperties light;
     light.position = Point3(5, 5, 0);
@@ -27,17 +27,17 @@ GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning", true
     // Instantiate our Robots
     robotList_.push_back(Robot(Point3(0, 0, 0), Point3(10, 10, 0), 0.5, 0));
     robotList_.push_back(Robot(Point3(0, 5, 0), Point3(10, 5, 0), 0.5, 2));
-    robotList_.push_back(Robot(Point3(0, 10, 0), Point3(10, 0, 0), 1, 4));
-    robotList_.push_back(Robot(Point3(5, 10, 0), Point3(5, 0, 0), 1, 6));
+    robotList_.push_back(Robot(Point3(0, 10, 0), Point3(10, 0, 0), 0.5, 4));
+    robotList_.push_back(Robot(Point3(5, 10, 0), Point3(5, 0, 0), 0.5, 6));
     robotList_.push_back(Robot(Point3(10, 10, 0), Point3(0, 0, 0), 0.5, 8));
     robotList_.push_back(Robot(Point3(10, 5, 0), Point3(0, 5, 0), 0.5, 10));
-    robotList_.push_back(Robot(Point3(10, 0, 0), Point3(0, 10, 0), 1, 12));
-    robotList_.push_back(Robot(Point3(5, 0, 0), Point3(5, 10, 0), 1, 14));
+    robotList_.push_back(Robot(Point3(10, 0, 0), Point3(0, 10, 0), 0.5, 12));
+    robotList_.push_back(Robot(Point3(5, 0, 0), Point3(5, 10, 0), 0.5, 14));
 
     // Instantiate our Obstacle List
-    //obstacleList_.push_back(Obstacle(0.01, Point3(5, 5, 0)));
-    //obstacleList_.push_back(Obstacle(0.5, Point3(3, 8, 0)));
-    //obstacleList_.push_back(Obstacle(0.5, Point3(8, 8, 0)));
+    obstacleList_.push_back(Obstacle(0.5, Point3(5, 5, 0)));
+    obstacleList_.push_back(Obstacle(0.5, Point3(2.5, 2.5, 0)));
+    obstacleList_.push_back(Obstacle(0.5, Point3(7.5, 7.5, 0)));
 
     // Instantiate our PRM using our robots position, target position
     // and obstacles along the way
@@ -100,7 +100,7 @@ void GraphicsViewer::ConstructIndexes(std::vector<Node> nodes) {
 void GraphicsViewer::InitNanoGUI() {
     nanogui::FormHelper *gui = new nanogui::FormHelper(screen());
     nanogui::ref<nanogui::Window> window = gui->addWindow(Eigen::Vector2i(10, 10), "Simulation Controls");    
-    pauseBtn_ = gui->addButton("Pause", std::bind(&GraphicsViewer::OnPauseBtnPressed, this));
+    pauseBtn_ = gui->addButton("Play", std::bind(&GraphicsViewer::OnPauseBtnPressed, this));
 
     screen()->performLayout();
 }
