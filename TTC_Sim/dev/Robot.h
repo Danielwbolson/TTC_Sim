@@ -3,15 +3,12 @@
 #define ROBOT_H_
 
 #include <mingfx.h>
-#include <future>
-#include <time.h>
-#include <random>
 
 #include "Node.h"
 #include "Obstacle.h"
+#include "Astar.h"
 
-class PRM;
-class Astar;
+using namespace mingfx;
 
 class Robot {
 public:

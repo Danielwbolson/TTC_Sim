@@ -1,6 +1,10 @@
 
 #include "Astar.h"
 
+#include <queue>
+#include <limits>
+#include <algorithm>
+
 struct CompareNodesByDistance {
     bool operator()(const pair<int, float>& a, const pair<int, float>& b) const {
         return a.second > b.second;

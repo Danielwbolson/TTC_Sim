@@ -2,7 +2,9 @@
 #ifndef OBSTACLE_H_
 #define OBSTACLE_H_
 
-#include "mingfx.h"
+#include <mingfx.h>
+
+using namespace mingfx;
 
 class Obstacle {
 public:

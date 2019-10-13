@@ -3,15 +3,14 @@
 #define GRAPHICS_VIEWER_H_
 
 #include <mingfx.h>
-#include <string>
 #include <vector>
 
 #include "PRM.h"
 #include "Robot.h"
 #include "Obstacle.h"
-#include "Node.h"
 #include "Astar.h"
 
+using namespace mingfx;
 
 class GraphicsViewer : public GraphicsApp {
 public:

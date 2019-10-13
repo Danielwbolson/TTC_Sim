@@ -3,15 +3,11 @@
 #define ASTAR_H_
 
 #include "Node.h"
-#include "Robot.h"
 #include "Obstacle.h"
-
-#include <queue>
-#include <limits>
-#include <algorithm>
 
 using std::vector;
 using std::pair;
+using namespace mingfx;
 
 struct CompareNodesByDistance;
 

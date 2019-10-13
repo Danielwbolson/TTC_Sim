@@ -2,6 +2,10 @@
 #include "Robot.h"
 #include "Astar.h"
 
+#include <future>
+#include <time.h>
+#include <random>
+
 Robot::Robot() : position_(Point3(0, 0, 0)), radius_(0.5), pathIndex_(0) {
 
 }

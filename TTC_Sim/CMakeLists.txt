@@ -11,8 +11,7 @@
 # following line as needed to point to the MinGfx install prefix used on your system.
 
 # !!!!!!!!!!!!! EDIT THE FOLLOWING LINE AS NEEDED !!!!!!!!!!!!! 
-list(APPEND CMAKE_PREFIX_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../build/install ../../..
-                                /Daniel Olson/Desktop/Spring2018/5611/Assignment3)
+list(APPEND CMAKE_PREFIX_PATH ${CMAKE_CURRENT_SOURCE_DIR}/build/install ../../.. ${CMAKE_CURRENT_SOURCE_DIR})
 
 # For example, you might have installed to a build tree that now looks like this:
 # /Users/keefe/courses/cs4611/sw/include/MinGfx-1.0/
@@ -33,7 +32,7 @@ list(APPEND CMAKE_PREFIX_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../build/install ../..
 
 #### BASIC PROJECT SETUP ####
 
-project(MotionPlanning)
+project(TTC_Sim)
 
 # Using 3.9 to get a modern version of FindOpenGL.cmake
 cmake_minimum_required (VERSION 3.9) 
@@ -63,22 +62,22 @@ message(STATUS "Install prefix: ${CMAKE_INSTALL_PREFIX}")
 h2("Configuring source files")
 
 set(SOURCEFILES
-  main.cpp
-  GraphicsViewer.cpp
-  Astar.cpp
-  PRM.cpp
-  Node.cpp
-  Obstacle.cpp
-  Robot.cpp
+  dev/main.cpp
+  dev/GraphicsViewer.cpp
+  dev/Astar.cpp
+  dev/PRM.cpp
+  dev/Node.cpp
+  dev/Obstacle.cpp
+  dev/Robot.cpp
 )
 
 set(HEADERFILES
-  GraphicsViewer.h
-  Astar.h
-  PRM.h
-  Node.h
-  Obstacle.h
-  Robot.h
+  dev/GraphicsViewer.h
+  dev/Astar.h
+  dev/PRM.h
+  dev/Node.h
+  dev/Obstacle.h
+  dev/Robot.h
 )
 
 set(EXTRAFILES

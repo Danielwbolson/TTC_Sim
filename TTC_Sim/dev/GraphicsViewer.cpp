@@ -1,10 +1,13 @@
 
 #include "GraphicsViewer.h"
 
+#include <string>
 #include <nanogui/nanogui.h>
 #include <iostream>
 
-GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning", true), paused_(true) {
+#include "Node.h"
+
+GraphicsViewer::GraphicsViewer() : GraphicsApp(1024, 768, "Motion Planning"), paused_(true) {
 
     DefaultShader::LightProperties light;
     light.position = Point3(5, 5, 0);
@@ -20,7 +23,6 @@ GraphicsViewer::GraphicsViewer() : GraphicsApp(1024,768, "Motion Planning", true
     search_path.push_back("data/");
     search_path.push_back("./data/");
     search_path.push_back("../data/");
-    search_path.push_back("C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MotionPlanning/data/");
     //m_.LoadFromOBJ(Platform::FindFile("box.obj", search_path));
     m_.LoadFromOBJ(Platform::FindMinGfxDataFile("teapot.obj"));
 

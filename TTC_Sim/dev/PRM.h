@@ -6,10 +6,7 @@
 #include "Node.h"
 #include "Robot.h"
 
-#include <cmath>
-#include <time.h>
-#include <utility>
-#include <random>
+using namespace mingfx;
 
 class PRM {
 public:

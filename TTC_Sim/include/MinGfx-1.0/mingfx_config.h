@@ -17,9 +17,9 @@
 // and other information configured with cmake into our C++ code.
 
 
-#define MINGFX_DATA_DIR_BUILD "C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MinGfx/data"
-#define MINGFX_DATA_DIR_INSTALL "C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/share/MinGfx-1.0/data"
+#define MINGFX_DATA_DIR_BUILD "D:/Daniel/Desktop/TTC_Sim/TTC_Sim/external/MinGfx/data"
+#define MINGFX_DATA_DIR_INSTALL "D:/Daniel/Desktop/TTC_Sim/TTC_Sim/share/MinGfx-1.0/data"
 
-#define MINGFX_SHADERS_DIR_BUILD "C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/dev/MinGfx/src/shaders"
-#define MINGFX_SHADERS_DIR_INSTALL "C:/Users/Daniel/Desktop/Spring2018/5611/Assignment3/share/MinGfx-1.0/shaders"
+#define MINGFX_SHADERS_DIR_BUILD "D:/Daniel/Desktop/TTC_Sim/TTC_Sim/external/MinGfx/src/shaders"
+#define MINGFX_SHADERS_DIR_INSTALL "D:/Daniel/Desktop/TTC_Sim/TTC_Sim/share/MinGfx-1.0/shaders"
 

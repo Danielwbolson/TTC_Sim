@@ -1,6 +1,11 @@
 
 #include "PRM.h"
 
+#include <cmath>
+#include <time.h>
+#include <utility>
+#include <random>
+
 PRM::PRM(std::vector<Robot> &robotList, std::vector<Obstacle> obstacles) {
     obstacles_ = obstacles;
     srand(time(NULL));

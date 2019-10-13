@@ -39,6 +39,8 @@ namespace mingfx {
     - DrawUsingNanoVG() is the right place to make 2D drawing calls using the nanovg library.
  
     - DrawUsingOpenGL() is the right place to make 2D or 3D drawing calls using OpenGL.  This includes drawing using the Mesh, QuickShapes, DefaultShader, ShaderProgram, and all other MinGfx classes since these are all based on OpenGL.
+
+    - InitNanoGUI() is the right place to create nanogui windows to add a 2D user interface to your app.
  
     - InitOpenGL() is the right place to load textures, meshes, shaders, and other graphics objects that can only be created after the OpenGL context exists.
  
@@ -46,12 +48,13 @@ namespace mingfx {
  
  Keep in mind that internally the app uses a rendering loop that looks something like this:
  ~~~
- InitOpenGL(); // your hook for initialization after OpenGL is active
+ InitNanoGUI(); // your hook for initializing NanoGUI widgets
+ InitOpenGL();  // your hook for initializing OpenGL graphics
  while (!program_ready_to_close) {
      // user input
      internal_get_input_events_from_operating_system();
      OnMouseMove();  // your hook for processing input
-     On*(); // all other event callbacks -- your hook for processing input
+     On*();          // all other event callbacks -- your hook for processing input
  
      // phyics, etc.
      UpdateSimulation(); // your hook for physics, animation, AI, etc.
@@ -68,6 +71,7 @@ namespace mingfx {
  If you wish to add some buttons, sliders, etc. in your application, you can do this inside GraphicsApp by accessing the NanoGUI library.  You will need to pass NanoGUI a nanogui::screen object, which you can get from the screen() function.  NanoGui setup should be done in the constructor, like this:
  ~~~
  #include <mingfx.h>
+ using namespace mingfx;
  
  class MyApp : public GraphcisApp {
  public:
@@ -76,6 +80,11 @@ namespace mingfx {
     
     virtual ~MyApp() {}
 
+ 
+    void OnMouseMove(const Point2 &pos, const Vector2 &delta) {
+        std::cout << "Mouse moved to " << pos << std::endl;
+    }
+
     void InitNanoGUI() {
         // Setup the GUI window
         nanogui::Window *window = new nanogui::Window(screen(), "My GUI Panel");
@@ -83,17 +92,13 @@ namespace mingfx {
         window->setSize(Eigen::Vector2i(400,200));
         window->setLayout(new nanogui::GroupLayout());
  
-        nanoguiButton pause_btn = new nanogui::Button(window, "Pause");
+        nanogui::Button pause_btn = new nanogui::Button(window, "Pause");
         pause_btn->setCallback(std::bind(&QuakeApp::OnPauseBtnPressed, this));
         pause_btn->setTooltip("Toggle playback.");
  
         screen()->performLayout();
     }
- 
-    void OnMouseMove(const Point2 &pos, const Vector2 &delta) {
-        std::cout << "Mouse moved to " << pos << std::endl;
-    }
- 
+
     void InitOpenGL() {
         glClearColor(0.0, 0.0, 0.0, 1);
     }
@@ -126,11 +131,8 @@ public:
      \param width The width of the client area of the window in pixels.
      \param height The height of the client area of the window in pixels.
      \param caption The caption for the window's title bar.
-     \param init_graphics_in_constructor Defaults to true for backward compatibility,
-            but new apps should set this to false.  This option was added to support
-            testing graphics functions in batch mode with an off-screen framebuffer.
      */
-    GraphicsApp(int width, int height, const std::string &caption, bool init_graphics_in_constructor = true);
+    GraphicsApp(int width, int height, const std::string &caption);
 
 
     /// The destructor will shutdown the graphics system and window
@@ -244,6 +246,11 @@ public:
     virtual void OnSpecialKeyUp(int key, int scancode, int modifiers) {}
 
 
+    /// Override this to respond when the graphics window and/or framebuffer
+    /// are resized, either by the user dragging the window or through a call
+    /// to ResizeWindow().
+    virtual void OnWindowResize(int new_width, int new_height) {}
+    
     
     /** After creating a new GraphicsApp, call this to start the app's
      mainloop.  Each time through the mainloop the app will: 1. respond
@@ -252,16 +259,35 @@ public:
      Run() does not return until the user closes the app and the program
      is ready to shutdown.
      */
-    void Run();
+    virtual void Run();
+
     
-    
-    /** Called at the beginning of the Run() method.  This will initialize
+    /** Called at the beginning of the Run() method.  Override this to initialize
       any NanoGUI graphics related properties including 2D windows, buttons,
       sliders, etc...
+
+     IMPORTANT: Put any NanoGUI initialization code here, NOT in the constructors
+     of the classes that you create, or, create your classes from within this
+     function.  The graphics calls will fail if the OpenGL context has not yet
+     been initialized, and it is not guaranteed to be initialized until this
+     function has been called.
      */
     virtual void InitNanoGUI() {}
     
-    
+    /** Override this to initialize the OpenGL context with textures, vertex
+     buffers, etc. that you will use later inside DrawUsingOpenGL().  This
+     InitOpenGL() function is called once on program startup just after the
+     OpenGL drawing context is created.
+
+     IMPORTANT: Put any OpenGL initialization code here, NOT in the constructors
+     of the classes that you create, or, create your classes from within this
+     function.  The graphics calls will fail if the OpenGL context has not yet
+     been initialized, and it is not guaranteed to be initialized until this
+     function has been called.
+     */
+    virtual void InitOpenGL() {}
+
+
     /** Called once per frame.  Override this and fill it in to update your 
      simulation code or any other updates you need to make to your model that 
      are timed rather than in response to user input.
@@ -275,12 +301,7 @@ public:
     /// library, which provides an easy way to draw 2D shapes to the screen.
     virtual void DrawUsingNanoVG(NVGcontext *ctx) {}
 
-    /** Override this to initialize the OpenGL context with textures, vertex
-     buffers, etc. that you will use later inside DrawUsingOpenGL().  This
-     InitOpenGL() function is called once on program startup just after the
-     OpenGL drawing context is created.
-     */
-    virtual void InitOpenGL() {}
+
     
     /// Override this to draw graphics using raw OpenGL 2D or 3D graphics
     /// calls.
@@ -326,40 +347,54 @@ public:
      and bottom right = (window_width()-1, window_height()-1)) to normalized
      device coordinates, (top left = (-1,1) bottom right (1,-1)).
      */
-     Point2 PixelsToNormalizedDeviceCoords(Point2 pointInPixels);
+    virtual Point2 PixelsToNormalizedDeviceCoords(const Point2 &pointInPixels);
     
     /** Transforms a point in normalized device coordinates (top left = (-1,1)
      bottom right (1,-1)) to pixels (top left = (0,0), bottom right =
      (window width-1, window height-1))
      */
-    Point2 NormalizedDeviceCoordsToPixels(Point2 pointInNDC);
+    virtual Point2 NormalizedDeviceCoordsToPixels(const Point2 &pointInNDC);
     
     
     /** Transforms a vector in viewport coordinates (pixels where top left = (0,0)
      and bottom right = (window width-1, window height-1)) to normalized
      device coordinates, (top left = (-1,1) bottom right (1,-1)).
      */
-    Vector2 PixelsToNormalizedDeviceCoords(Vector2 vectorInPixels);
+    virtual Vector2 PixelsToNormalizedDeviceCoords(const Vector2 &vectorInPixels);
     
     /** Transforms a vector in normalized device coordinates (top left = (-1,1)
      bottom right (1,-1)) to pixels (top left = (0,0), bottom right =
      (window width-1, window height-1))
      */
-    Vector2 NormalizedDeviceCoordsToPixels(Vector2 pointInNDC);
+    virtual Vector2 NormalizedDeviceCoordsToPixels(const Vector2 &pointInNDC);
     
     /// Returns the z buffer value under the specified pixel.  z will be 0 at
     /// the near plane and +1 at the far plane.
     virtual float ReadZValueAtPixel(const Point2 &pointInPixels, unsigned int whichBuffer = GL_BACK);
 
     /// Access to the underlying NanoGUI Screen object
-    nanogui::Screen* screen();
+    virtual nanogui::Screen* screen();
 
     /// Access to the underlying GLFWwindow object
-    GLFWwindow* window();
+    virtual GLFWwindow* window();
+
+
+    /// Cause the graphics windows to resize programmatically rather than by dragging
+    /// on the corner manually.
+    virtual void ResizeWindow(int new_width, int new_height);
+    
+    
+    /** Users cannot make any graphics calls (e.g., setting the clear color,
+     saving mesh data to the GPU) until the graphics context is initialized
+     by calling this method.  It is called automatically by the Run() method
+     before calling the InitNanoGUI() and InitOpenGL() methods.  So, users
+     should place all of their graphics initialization code inside one of
+     those two methods.
+     */
+    virtual void InitGraphicsContext();
 
 private:
-    
-    void initGraphicsContext();
+
     bool cursor_pos_glfw_cb(double x, double y);
     bool mouse_button_glfw_cb(int button, int action, int modifiers);
     bool key_glfw_cb(int key, int scancode, int action, int mods);
@@ -368,10 +403,59 @@ private:
     bool scroll_glfw_cb(double x, double y);
     bool resize_glfw_cb(int width, int height);
     
-    bool initGraphicsContextInConstructor_;
+    virtual void mouse_move(const Point2 &pos, const Vector2 &delta) {
+        OnMouseMove(pos, delta);
+    }
+    virtual void left_mouse_down(const Point2 &pos) {
+        OnLeftMouseDown(pos);
+    }
+    virtual void left_mouse_drag(const Point2 &pos, const Vector2 &delta) {
+        OnLeftMouseDrag(pos, delta);
+    }
+    virtual void left_mouse_up(const Point2 &pos) {
+        OnLeftMouseUp(pos);
+    }
+    virtual void middle_mouse_down(const Point2 &pos) {
+        OnMiddleMouseDown(pos);
+    }
+    virtual void middle_mouse_drag(const Point2 &pos, const Vector2 &delta) {
+        OnMiddleMouseDrag(pos, delta);
+    }
+    virtual void middle_mouse_up(const Point2 &pos) {
+        OnMiddleMouseUp(pos);
+    }
+    virtual void right_mouse_down(const Point2 &pos) {
+        OnRightMouseDown(pos);
+    }
+    virtual void right_mouse_drag(const Point2 &pos, const Vector2 &delta) {
+        OnRightMouseDrag(pos, delta);
+    }
+    virtual void right_mouse_up(const Point2 &pos) {
+        OnRightMouseUp(pos);
+    }
+    virtual void key_down(const char *c, int modifiers) {
+        OnKeyDown(c, modifiers);
+    }
+    virtual void key_repeat(const char *c, int modifiers) {
+        OnKeyRepeat(c, modifiers);
+    }
+    virtual void key_up(const char *c, int modifiers) {
+        OnKeyUp(c, modifiers);
+    }
+    virtual void special_key_down(int key, int scancode, int modifiers) {
+        OnSpecialKeyDown(key, scancode, modifiers);
+    }
+    virtual void special_key_repeat(int key, int scancode, int modifiers) {
+        OnSpecialKeyRepeat(key, scancode, modifiers);
+    }
+    virtual void special_key_up(int key, int scancode, int modifiers) {
+        OnSpecialKeyUp(key, scancode, modifiers);
+    }
+
+    bool graphicsInitialized_;
     int width_;
     int height_;
-    const std::string &caption_;
+    const std::string caption_;
     nanogui::Screen *screen_;
     GLFWwindow* window_;
     double lastDrawT_;

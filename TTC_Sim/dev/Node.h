@@ -3,8 +3,8 @@
 #define NODE_H_
 
 #include <mingfx.h>
-#include <utility>
-#include <memory>
+
+using namespace mingfx;
 
 class Node {
 public:
